@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useRouter } from "next/router";
 import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
 import DashboardLayout from "../components/dashboard/layout/DashboardLayout";
+import ProtectedRoute from "../components/dashboard/ProtectedRoute";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -27,11 +28,11 @@ const MyApp = ({ Component, pageProps }) => {
             <Component {...pageProps} />
           </EccormerceLayout>
         ) : (
-          <ProtectedRoutes>
+          <ProtectedRoute>
             <DashboardLayout>
               <Component {...pageProps} />
             </DashboardLayout>
-          </ProtectedRoutes>
+          </ProtectedRoute>
         )}
       </PersistGate>
     </Provider>
