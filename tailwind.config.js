@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         bord: "#DADADA",
         textcol: "#555555",
+        textgreen: "#00BA34",
       },
     },
   },

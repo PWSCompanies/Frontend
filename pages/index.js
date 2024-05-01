@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 
 import { testReducerActions } from "../store/test-reducer";
-import HomeProducts from "../components/eccormerce/HomeProducts";
+import HomePage from "../components/eccormerce/HomePage";
 
 const appTitle = "My project name"; // TODO - Update this
 const appDescription = "This is the description about my project"; // TODO - Update this
@@ -44,7 +44,7 @@ const Home = () => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <HomeProducts />
+      <HomePage />
     </Fragment>
   );
 };
