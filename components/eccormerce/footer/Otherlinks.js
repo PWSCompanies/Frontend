@@ -12,8 +12,8 @@ export default function Otherlinks() {
           <div className="">Contact Us</div>
           <div className="">Privacy Policy</div>
           <div className="">Terms & Conditions</div>
-          <div className="">Top articles on PWC</div>
-          <div className="">Top searches on PWC</div>
+          <div className="">Top articles on PWS</div>
+          <div className="">Top searches on PWS</div>
         </div>
         {/* Partners */}
         <div className="text-textcol flex flex-col gap-4">
@@ -26,8 +26,8 @@ export default function Otherlinks() {
         <div className="text-textcol flex flex-col gap-4">
           <div className="font-semibold text-black">Useful links</div>
           <div className="">Service Center</div>
-          <div className="">How to shop on PWC?</div>
-          <div className="">How to return a product on PWC?</div>
+          <div className="">How to shop on PWS?</div>
+          <div className="">How to return a product on PWS?</div>
           <div className="">Corporate and bulk purchases</div>
           <div className="">Report a Product</div>
           <div className="">Dispute Resolution Policy</div>
