@@ -4,6 +4,7 @@ import NewAndPopular from "./frontpage/NewAndPopular";
 import TopBeautyDeals from "./frontpage/TopBeautyDeals";
 import TodayDeals from "./frontpage/TodayDeals";
 import { sampleData } from "../../utils/products";
+import { SeeMore } from "./svg/SvgImages";
 
 export default function HomePage() {
   const [firstThreeBestSellers, setFirstThreeBestSellers] = useState([]);
@@ -75,19 +76,29 @@ export default function HomePage() {
       <div className="bg-[#F5F5F5] p-5 flex flex-col gap-3">
         {/*Today Deals */}
         <div className="w-[100%]">
-          <div className="flex w-[100%] justify-between">
-            <span>Today Deals</span>
-            <span>See all</span>
+          <div className="flex w-[100%] justify-between mb-2">
+            <div className="font-bold text-sm border-2 border-l-[#00BA34] pl-3">
+              <span>Today Deals</span>
+            </div>
+            <div className="font-bold text-sm flex gap-2">
+              <span>See all</span>
+              <SeeMore />
+            </div>
           </div>
-          <TodayDeals />
+          <TodayDeals todaydeals={sampleData} />
         </div>
         {/*Top Beauty Deals */}
         <div className="w-[100%]">
-          <div className="flex w-[100%] justify-between">
-            <span>Top Beauty Deals</span>
-            <span>See all</span>
+          <div className="flex w-[100%] justify-between mb-2">
+            <div className="font-bold text-sm border-2 border-l-[#00BA34] pl-3">
+              <span>Top Beauty Deals</span>
+            </div>
+            <div className="font-bold text-sm flex gap-2">
+              <span>See all</span>
+              <SeeMore />
+            </div>
           </div>
-          <TopBeautyDeals />
+          <TopBeautyDeals topbeauty={sampleData} />
         </div>
       </div>
     </div>
