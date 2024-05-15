@@ -2,8 +2,6 @@ import Image from "next/image";
 import React from "react";
 import { Instock, Rating } from "../svg/SvgImages";
 
-import React from "react";
-
 function Showglasstwo({ data }) {
   return (
     <div className="rounded flex flex-col">
