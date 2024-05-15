@@ -4,7 +4,7 @@ import { Instock, Rating } from "../svg/SvgImages";
 
 export default function ShowCaseTwo({ data }) {
   return (
-    <div className="rounded flex flex-col truncate">
+    <div className="rounded flex flex-col">
       {/* Product image */}
       {/* <img src={`${data.url}`} alt="image for product" className="h-44" /> */}
       <div className="bg-[#fff] rounded p-2">
@@ -17,7 +17,9 @@ export default function ShowCaseTwo({ data }) {
       </div>
       {/* End of product image */}
       {/* Product description */}
-      <small className="font-normal">{data?.description}</small>
+      <small className="font-normal w-[50%] overflow-hidden overflow-ellipsis whitespace-nowrap truncate">
+        {data?.description}
+      </small>
       {/* End of product's de */}
       {/*Product Price */}
       <div className="font-bold text-lg">₦{data?.price}</div>

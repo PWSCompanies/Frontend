@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Otherlinks() {
   return (
-    <div className="flex justify-between items-start w-[100%] px-10">
+    <div className="flex md:flex-row flex-col md:justify-between md:items-start w-[100%] p-5 md:px-10">
       {/* left side */}
       <div className="flex grow justify-start gap-10">
         {/* About pws */}
