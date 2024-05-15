@@ -14,9 +14,6 @@ export default function HomePage() {
   const [loadingSeller, setLoadingSeller] = useState(true);
   const [loadingNewpopular, setLoadingNewPopular] = useState(true);
 
-  // const firstThreeBestSellers = bestSellers.slice(0, 3);
-  // const secondThreeBestSellers = bestSellers.slice(3, 6);
-
   //dummy implementation of an api call
   const getBestsellers = async () => {
     console.log(sampleData, "checking out first");
