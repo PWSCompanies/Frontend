@@ -3,8 +3,8 @@ import React from "react";
 export function SeeMore() {
   return (
     <svg
-      width="16"
-      height="17"
+      width={16}
+      height={17}
       viewBox="0 0 16 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -13,8 +13,8 @@ export function SeeMore() {
         d="M6.66669 4.5L10.6667 8.5L6.66669 12.5V4.5Z"
         fill="#555555"
         stroke="#555555"
-        stroke-width="2"
-        stroke-linejoin="round"
+        strokeWidth={2}
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -23,15 +23,15 @@ export function SeeMore() {
 export function Rating() {
   return (
     <svg
-      width="14"
-      height="14"
+      width={14}
+      height={14}
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6.29302 1.87249C6.55436 1.24424 7.44569 1.24424 7.70702 1.87249L8.92152 4.79266L12.0739 5.04583C12.7529 5.10008 13.0282 5.94708 12.5108 6.39041L10.1092 8.44783L10.8424 11.5237C11.0005 12.1864 10.2801 12.7097 9.69911 12.355L7.00002 10.7065L4.30094 12.355C3.71994 12.7097 2.99952 12.1858 3.15761 11.5237L3.89086 8.44783L1.48927 6.39041C0.971855 5.94708 1.24719 5.10008 1.92619 5.04583L5.07852 4.79266L6.29302 1.87249Z"
         fill="#00BA34"
       />
@@ -42,8 +42,8 @@ export function Rating() {
 export function Instock() {
   return (
     <svg
-      width="14"
-      height="14"
+      width={14}
+      height={14}
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -59,33 +59,33 @@ export function Instock() {
       <defs>
         <radialGradient
           id="paint0_radial_2111_1016"
-          cx="0"
-          cy="0"
-          r="1"
+          cx={0}
+          cy={0}
+          r={1}
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(6.80486 13.5954) rotate(-179.751) scale(7.72053 12.6678)"
         >
-          <stop offset="0.314" stop-color="#FF9800" />
-          <stop offset="0.662" stop-color="#FF6D00" />
-          <stop offset="0.972" stop-color="#F44336" />
+          <stop offset="0.314" stopColor="#FF9800" />
+          <stop offset="0.662" stopColor="#FF6D00" />
+          <stop offset="0.972" stopColor="#F44336" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_2111_1016"
-          cx="0"
-          cy="0"
-          r="1"
+          cx={0}
+          cy={0}
+          r={1}
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(7.23845 5.91263) rotate(90.5787) scale(8.07804 6.07933)"
         >
-          <stop offset="0.214" stop-color="#FFF176" />
-          <stop offset="0.328" stop-color="#FFF27D" />
-          <stop offset="0.487" stop-color="#FFF48F" />
-          <stop offset="0.672" stop-color="#FFF7AD" />
-          <stop offset="0.793" stop-color="#FFF9C4" />
-          <stop offset="0.822" stop-color="#FFF8BD" stop-opacity="0.804" />
-          <stop offset="0.863" stop-color="#FFF6AB" stop-opacity="0.529" />
-          <stop offset="0.91" stop-color="#FFF38D" stop-opacity="0.209" />
-          <stop offset="0.941" stop-color="#FFF176" stop-opacity="0" />
+          <stop offset="0.214" stopColor="#FFF176" />
+          <stop offset="0.328" stopColor="#FFF27D" />
+          <stop offset="0.487" stopColor="#FFF48F" />
+          <stop offset="0.672" stopColor="#FFF7AD" />
+          <stop offset="0.793" stopColor="#FFF9C4" />
+          <stop offset="0.822" stopColor="#FFF8BD" stopOpacity="0.804" />
+          <stop offset="0.863" stopColor="#FFF6AB" stopOpacity="0.529" />
+          <stop offset="0.91" stopColor="#FFF38D" stopOpacity="0.209" />
+          <stop offset="0.941" stopColor="#FFF176" stopOpacity={0} />
         </radialGradient>
       </defs>
     </svg>
