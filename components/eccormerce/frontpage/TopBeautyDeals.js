@@ -1,5 +1,5 @@
 import React from "react";
-import ShowcaseTwo from "../showcase/ShowcaseTwo";
+import ShowcaseTwo from "../showcase/ShowcaseTwo.js";
 
 export default function TopBeautyDeals({ topbeauty }) {
   return (
