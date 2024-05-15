@@ -4,7 +4,7 @@ import { Instock, Rating } from "../svg/SvgImages";
 
 import React from "react";
 
-function showCaseTwo({ data }) {
+function Showglasstwo({ data }) {
   return (
     <div className="rounded flex flex-col">
       {/* Product image */}
@@ -52,4 +52,4 @@ function showCaseTwo({ data }) {
   );
 }
 
-export default showCaseTwo;
+export default Showglasstwo;

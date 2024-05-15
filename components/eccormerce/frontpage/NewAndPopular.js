@@ -1,5 +1,5 @@
 import React from "react";
-import ShowcaseOne from "../showcase/ShowcaseOne";
+import ShowcaseOne from "../showcase/Showglassone";
 
 export default function NewAndPopular({ newandpopular }) {
   return (

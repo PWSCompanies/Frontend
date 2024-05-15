@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-export default function ShowcaseOne({ data }) {
+export default function Showglassone({ data }) {
   console.log(data, "dataaaaa oooo");
   return (
     <div className="rounded flex flex-col gap-4">
