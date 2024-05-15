@@ -2,7 +2,9 @@ import Image from "next/image";
 import React from "react";
 import { Instock, Rating } from "../svg/SvgImages";
 
-export default function ShowcaseTwo({ data }) {
+import React from "react";
+
+function showCaseTwo({ data }) {
   return (
     <div className="rounded flex flex-col">
       {/* Product image */}
@@ -49,3 +51,5 @@ export default function ShowcaseTwo({ data }) {
     </div>
   );
 }
+
+export default showCaseTwo;
