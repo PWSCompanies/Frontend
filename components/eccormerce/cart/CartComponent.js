@@ -40,7 +40,7 @@ export default function CartComponent() {
 
   return (
     <div className="w-[100%] px-[120px] py-[30px] bg-neutral-100">
-      <div className="custom-container flex justify-between gap-4">
+      <div className="mx-auto max-w-[1200px] flex justify-between gap-4">
         <div className="w-[71%] bg-white rounded-[10px] shadow border overflow-hidden">
           <div className="w-[100%] pl-5 py-[19px] bg-white border-b border-zinc-300 justify-start items-center flex">
             <span className="text-zinc-800 text-base font-semibold">
