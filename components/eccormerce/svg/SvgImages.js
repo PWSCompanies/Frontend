@@ -107,3 +107,115 @@ export function Menuharmbuger() {
     </svg>
   );
 }
+
+export const MinusIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={16}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <path
+      stroke="#000"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={0.75}
+      d="M3.625 8h8.75"
+    />
+  </svg>
+)
+
+export const PlusIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={15}
+    height={15}
+    fill="none"
+    {...props}
+  >
+    <path stroke="#fff" d="M7.5 3.75v7.5m3.75-3.75h-7.5" />
+  </svg>
+)
+
+export const DeleteIcon = (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={28}
+      fill="none"
+      {...props}
+    >
+      <path
+        fill="#00BA34"
+        d="M17.625 4.598v.283c1.624.149 3.24.362 4.848.64a.937.937 0 1 1-.32 1.848l-.262-.044-1.256 16.338a3.75 3.75 0 0 1-3.739 3.462H7.105a3.75 3.75 0 0 1-3.739-3.462L2.11 7.325l-.261.044a.938.938 0 0 1-.32-1.848 60.706 60.706 0 0 1 4.847-.64v-.284c0-1.955 1.516-3.625 3.52-3.688a65.83 65.83 0 0 1 4.211 0c2.004.063 3.519 1.734 3.519 3.689Zm-7.67-1.815a63.987 63.987 0 0 1 4.091 0c.942.03 1.704.822 1.704 1.815v.14a61.856 61.856 0 0 0-7.5 0v-.14c0-.993.761-1.785 1.705-1.815Zm-.444 7.43a.938.938 0 1 0-1.875.073l.434 11.25a.938.938 0 1 0 1.874-.072l-.433-11.25Zm6.85.073a.94.94 0 0 0-.899-1.005.937.937 0 0 0-.973.933l-.434 11.25a.938.938 0 1 0 1.875.072l.431-11.25Z"
+      />
+    </svg>
+  )
+
+  export const CartIcon1 = (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="gray"
+      viewBox="0 0 576 512"
+      {...props}
+    >
+      <path d="M24 0C10.7 0 0 10.7 0 24s10.7 24 24 24h45.5c3.8 0 7.1 2.7 7.9 6.5l51.6 271c6.5 34 36.2 58.5 70.7 58.5H488c13.3 0 24-10.7 24-24s-10.7-24-24-24H199.7c-11.5 0-21.4-8.2-23.6-19.5l-5.4-28.5h288.5c32.6 0 61.1-21.8 69.5-53.3l41-152.3C576.6 57 557.4 32 531.1 32H360v102.1l23-23c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-64 64c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l23 23V32H120.1C111 12.8 91.6 0 69.5 0H24zm152 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm336-48a48 48 0 1 0-96 0 48 48 0 1 0 96 0z" />
+    </svg>
+  )
+
+  export const FlameIcon = (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={14}
+      height={15}
+      fill="none"
+      {...props}
+    >
+      <g clipPath="url(#a)">
+        <path
+          fill="url(#b)"
+          d="M3.89 4.955c-.062.665-.106 1.842.287 2.343 0 0-.185-1.293 1.472-2.915.667-.653.821-1.541.588-2.207a2.573 2.573 0 0 0-.584-.907.196.196 0 0 1 .15-.332c1.079.049 2.826.348 3.569 2.212.326.818.35 1.664.195 2.523-.099.55-.449 1.77.35 1.92.57.107.845-.346.969-.672a.194.194 0 0 1 .326-.061c.962 1.095 1.044 2.384.845 3.495C11.672 12.5 9.5 14.06 7.34 14.06c-2.697 0-4.844-1.543-5.401-4.336-.224-1.128-.11-3.36 1.629-4.934.129-.118.34-.013.322.164Z"
+        />
+        <path
+          fill="url(#c)"
+          d="M8.324 8.968c-.995-1.28-.55-2.74-.306-3.322.033-.076-.054-.149-.123-.102-.428.291-1.304.976-1.712 1.94-.552 1.302-.513 1.94-.186 2.719.197.469-.032.568-.146.586-.112.017-.215-.057-.297-.135a1.76 1.76 0 0 1-.485-.83c-.018-.069-.106-.087-.147-.031-.306.423-.465 1.102-.472 1.582-.024 1.484 1.202 2.688 2.685 2.688 1.869 0 3.23-2.068 2.157-3.796-.312-.503-.605-.832-.968-1.3Z"
+        />
+      </g>
+      <defs>
+        <radialGradient
+          id="b"
+          cx={0}
+          cy={0}
+          r={1}
+          gradientTransform="matrix(-7.72046 -.03355 .05505 -12.66768 6.806 14.095)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset={0.314} stopColor="#FF9800" />
+          <stop offset={0.662} stopColor="#FF6D00" />
+          <stop offset={0.972} stopColor="#F44336" />
+        </radialGradient>
+        <radialGradient
+          id="c"
+          cx={0}
+          cy={0}
+          r={1}
+          gradientTransform="rotate(90.579 .445 6.789) scale(8.07804 6.07933)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset={0.214} stopColor="#FFF176" />
+          <stop offset={0.328} stopColor="#FFF27D" />
+          <stop offset={0.487} stopColor="#FFF48F" />
+          <stop offset={0.672} stopColor="#FFF7AD" />
+          <stop offset={0.793} stopColor="#FFF9C4" />
+          <stop offset={0.822} stopColor="#FFF8BD" stopOpacity={0.804} />
+          <stop offset={0.863} stopColor="#FFF6AB" stopOpacity={0.529} />
+          <stop offset={0.91} stopColor="#FFF38D" stopOpacity={0.209} />
+          <stop offset={0.941} stopColor="#FFF176" stopOpacity={0} />
+        </radialGradient>
+        <clipPath id="a">
+          <path fill="#fff" d="M0 .5h14v14H0z" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
