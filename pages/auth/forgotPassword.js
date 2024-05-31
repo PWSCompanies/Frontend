@@ -1,5 +1,10 @@
 import React from "react";
+import ForgotPasswordContainer from "../../components/Onboarding/ForgotPassword/ForgotPasswordContainer";
 
 export default function forgotPassword() {
-  return <div>forgotPassword</div>;
+  return(
+    <div>
+      <ForgotPasswordContainer />
+    </div>
+  );
 }
