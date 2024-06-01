@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckMarkIcon1, PencilIcon, PlusIcon } from "../svg/SvgImages";
+import { Button } from "./CustomComponent";
 
 export default function ChangeAddress({ closeModal, openModalTwo }) {
   return (
@@ -47,31 +48,32 @@ export default function ChangeAddress({ closeModal, openModalTwo }) {
                 </button>
               </div>
             </label>
-            
-            <button className="w-[133px] h-9 px-5 py-2.5 bg-green-600 rounded-[10px] justify-start items-center gap-[5px] flex"
+
+            <Button
+              className="w-[133px] h-9 bg-green-600 text-white justify-start items-center gap-[5px] flex"
               onClick={openModalTwo}
             >
               <PlusIcon className="w-4 h-4" />
               <span className="text-center text-white text-xs font-medium">
                 Add Address
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
       <div className="w-full rounded-b-[10px] absolute left-0 bottom-0 right-0 pr-5 py-2.5 bg-white border-t border-zinc-300 justify-end mt-[42px] items-center flex">
         <div className="self-stretch justify-start items-center gap-[15px] flex">
-          <button
-            className="text-center text-green-600 text-sm font-medium"
-            onClick={closeModal}
+          <Button onClick={closeModal}
+            customStyles={{
+              padding: "p-0",
+              bgColor: "bg-white",
+              textColor: "text-green-600",
+              rounded: "rounded-[0px]",
+            }}
           >
             CANCEL
-          </button>
-          <button className="w-[137px] h-10 px-5 py-3 bg-green-600 rounded-[10px] justify-center items-center flex">
-            <span className="text-center text-white text-xs font-medium">
-              SELECT ADDRESS
-            </span>
-          </button>
+          </Button>
+          <Button className="w-[137px]">SELECT ADDRESS</Button>
         </div>
       </div>
     </div>

@@ -115,3 +115,26 @@ export const CustomSelect = ({ options, value, onChange, label, placeholder, dis
     </div>
   );
 }
+
+export const Button = ({ children, onClick, disabled = false, customStyles = {} }) => {
+  const {
+    padding = 'px-5 py-3',
+    textColor = 'text-white',
+    bgColor = 'bg-green-600',
+    rounded = 'rounded-[10px]',
+    additionalClasses = '',
+  } = customStyles;
+
+  const baseStyles = `${padding} ${textColor} text-xs font-medium ${bgColor} ${rounded} justify-center items-center flex`;
+  const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseStyles} ${disabledStyles} ${additionalClasses}`}
+    >
+      {children}
+    </button>
+  );
+};
