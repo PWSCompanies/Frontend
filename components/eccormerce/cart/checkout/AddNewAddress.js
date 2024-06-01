@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { CloseIcon } from "../svg/SvgImages";
 import { nigeriaData } from "./ListData";
 import {
   Button,
   CheckboxInputField,
   CustomSelect,
   InputField,
-} from "./CustomComponent";
+} from "../CustomComponent";
 
 export default function AddNewAddress({ closeModalTwo }) {
   const [selectedState, setSelectedState] = useState("");
@@ -45,14 +44,7 @@ export default function AddNewAddress({ closeModalTwo }) {
   return (
     <div className="w-[800px] relative bg-white rounded-[10px] overflow-hidden shadow">
       <div className="w-full max-h-[630px] min-h-[200px] overflow-y-auto">
-        <div className="w-full h-[60px] p-5 border-b border-zinc-300 justify-between items-center flex">
-          <div className="self-stretch w-full justify-between items-center gap-[5px] flex">
-            <span className="text-zinc-800 text-sm font-semibold">
-              ADD NEW ADDRESS
-            </span>
-            <CloseIcon />
-          </div>
-        </div>
+        
         <div className="w-full border h-full">
           <form className="pb-20">
             <div className="p-5">
@@ -89,7 +81,7 @@ export default function AddNewAddress({ closeModalTwo }) {
             </div>
             <div className="w-full rounded-b-[10px] absolute left-0 bottom-0 right-0 pr-5 py-2.5 bg-white border-t border-zinc-300 justify-end mt-[42px] items-center flex">
               <div className="self-stretch justify-start items-center gap-[15px] flex">
-                <Button onClick={closeModalTwo}
+                <Button type="button" onClick={closeModalTwo}
                   customStyles={{
                     padding: "p-0",
                     bgColor: "bg-white",
@@ -97,7 +89,7 @@ export default function AddNewAddress({ closeModalTwo }) {
                     rounded: "rounded-[0px]",
                   }}
                 >CANCEL</Button>
-                <Button className="w-[90px] bg-green-600 text-white h-10">
+                <Button type="submit" className="w-[90px] bg-green-600 text-white h-10">
                   SAVE
                 </Button>
               </div>

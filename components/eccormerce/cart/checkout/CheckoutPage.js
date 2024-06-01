@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckMarkIcon1, PaystackLogo } from "../svg/SvgImages";
+import { CheckMarkIcon1, PaystackLogo } from "../../svg/SvgImages";
 import {
   selectCartItems,
   selectCartSubtotal,
-} from "../../../store/cart/cartSlice";
+} from "../../../../store/cart/cartSlice";
 import { useSelector } from "react-redux";
-import { formatNumberWithCommas } from "../formatNumber";
+import { formatNumberWithCommas } from "../../formatNumber";
 import ChangeAddress from "./ChangeAddress";
 import AddNewAddress from "./AddNewAddress";
-import { CustomModal } from "./CustomComponent";
+import { Button, Modal } from "../CustomComponent";
 
 export default function CheckoutPage() {
   const cartItems = useSelector(selectCartItems);
@@ -38,14 +38,18 @@ export default function CheckoutPage() {
                   1. CUSTOMER ADDRESS
                 </span>
               </div>
-              <button
-                className="w-[89px] self-stretch pl-5 pr-[19px] pt-3 pb-[13px] bg-green-600/10 rounded-[10px] justify-center items-center flex"
+              <Button
+                className="w-[89px] self-stretch pl-5 pr-[19px] pt-3 pb-[13px]  rounded-[10px] justify-center items-center flex"
                 onClick={openModal}
+                customStyles={{
+                  bgColor: "bg-green-600/10",
+                  textColor: "text-green-600",
+                }}
               >
                 <span className="text-center text-green-600 text-xs font-semibold">
                   CHANGE
                 </span>
-              </button>
+              </Button>
             </div>
             <div className="w-full p-5 pb-[26px] h-full">
               <div className="self-stretch w-full flex-col justify-start items-start gap-2.5 flex">
@@ -148,21 +152,35 @@ export default function CheckoutPage() {
             </span>
           </div>
           <div className="w-full h-[85px] px-5 pt-[18px] pb-[17px] bg-white border-b border-zinc-300 justify-center items-center flex">
-            <button
-              className={`grow shrink text-center text-white text-sm font-semibold basis-0 self-stretch pt-[17px] pb-4 bg-green-600 rounded-[10px] justify-center items-center flex`}
+            <Button
+              customStyles={{
+                customClasses: "w-full h-[50px]",
+              }}
             >
               CONFIRM ORDER
-            </button>
+            </Button>
           </div>
         </div>
       </div>
-      <CustomModal isOpen={isModalOpen} showCloseIcon={false}>
-        {isModalTwoOpen ? (
-          <AddNewAddress closeModalTwo={closeModalTwo} />
-        ) : (
-          <ChangeAddress closeModal={closeModal} openModalTwo={openModalTwo} />
-        )}
-      </CustomModal>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="1. CUSTOMER ADDRESS"
+        showCloseIcon={true}
+        showCheckedIcon={false}
+      >
+        <ChangeAddress closeModal={closeModal} openModalTwo={openModalTwo} />
+      </Modal>
+
+      <Modal
+        isOpen={isModalTwoOpen}
+        onClose={closeModalTwo}
+        title="ADD NEW ADDRESS"
+        showCloseIcon={false}
+      >
+        <AddNewAddress closeModalTwo={closeModalTwo} />
+      </Modal>
     </div>
   );
 }

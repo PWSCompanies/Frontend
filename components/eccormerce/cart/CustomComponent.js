@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CloseIcon } from "../svg/SvgImages";
+import { CheckMarkIcon1, CloseIcon } from "../svg/SvgImages";
 
 export const InputField = ({
   id,
@@ -58,10 +58,11 @@ export const CheckboxInputField = ({
   );
 };
 
-export const CustomModal = ({
+export const Modal = ({
   isOpen,
   onClose,
   showCloseIcon = true,
+  showCheckedIcon = true,
   children,
   title,
 }) => {
@@ -75,31 +76,49 @@ export const CustomModal = ({
 
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-green-600 bg-opacity-20">
-      <div className="bg-white rounded-lg shadow-lg">
-        <div className="flex items-center justify-between">
-          <h2 className="pb-2 w-full text-center text-xl text-black">
-            {title}
-          </h2>
-          {showCloseIcon && (
-            <button onClick={onClose} className="float-right">
-              <CloseIcon className="text-black w-6 h-6" />
-            </button>
-          )}
+    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black bg-opacity-50">
+      <div className="bg-white relative rounded-[10px] overflow-hidden shadow-lg">
+        <div className="w-full h-[60px] z-10 bg-white absolute left-0 right-0 top-0 p-5 border-b border-zinc-300 justify-between items-center flex">
+          <div className="self-stretch w-full justify-between items-center gap-[5px] flex">
+            <div className="self-stretch justify-start items-center gap-[5px] flex">
+              {showCheckedIcon && <CheckMarkIcon1 />}
+              <span className="text-zinc-800 text-sm font-semibold">
+                {title}
+              </span>
+            </div>
+            {showCloseIcon && (
+              <button onClick={onClose} className="float-right">
+                <CloseIcon className="text-black w-6 h-6" />
+              </button>
+            )}
+          </div>
         </div>
-        <div className="clear-both">{children}</div>
+        <div className="clear-both mt-[60px]">{children}</div>
       </div>
     </div>
   );
 };
 
-export const CustomSelect = ({ options, value, onChange, label, placeholder, disabled }) => {
+export const CustomSelect = ({
+  options,
+  value,
+  onChange,
+  label,
+  placeholder,
+  disabled,
+}) => {
   return (
     <div className="w-full">
-      {label && <label className="block mb-2 text-sm font-medium text-gray-700">{label}</label>}
+      {label && (
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
       <div className="relative">
         <select
-          className={`w-full h-[60px] px-[21px] text-zinc-500 text-base font-medium bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+          className={`w-full h-[60px] px-[21px] text-zinc-500 text-base font-medium bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${
+            disabled ? "bg-gray-100 cursor-not-allowed" : ""
+          }`}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
@@ -114,25 +133,32 @@ export const CustomSelect = ({ options, value, onChange, label, placeholder, dis
       </div>
     </div>
   );
-}
+};
 
-export const Button = ({ children, onClick, disabled = false, customStyles = {} }) => {
+export const Button = ({
+  children,
+  onClick,
+  type = "button",
+  disabled = false,
+  customStyles = {},
+}) => {
   const {
-    padding = 'px-5 py-3',
-    textColor = 'text-white',
-    bgColor = 'bg-green-600',
-    rounded = 'rounded-[10px]',
-    additionalClasses = '',
+    padding = "px-5 py-3",
+    textColor = "text-white",
+    bgColor = "bg-green-600",
+    rounded = "rounded-[10px]",
+    customClasses = "",
   } = customStyles;
 
   const baseStyles = `${padding} ${textColor} text-xs font-medium ${bgColor} ${rounded} justify-center items-center flex`;
-  const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
+  const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";
 
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseStyles} ${disabledStyles} ${additionalClasses}`}
+      className={`${baseStyles} ${disabledStyles} ${customClasses}`}
     >
       {children}
     </button>

@@ -1,19 +1,11 @@
 import React from "react";
-import { CheckMarkIcon1, PencilIcon, PlusIcon } from "../svg/SvgImages";
-import { Button } from "./CustomComponent";
+import { PencilIcon, PlusIcon } from "../../svg/SvgImages";
+import { Button } from "../CustomComponent";
 
 export default function ChangeAddress({ closeModal, openModalTwo }) {
   return (
     <div className="w-[830px] relative bg-white rounded-[10px] shadow pb-20">
       <div className="w-full max-h-[530px] min-h-[200px] overflow-y-auto">
-        <div className="w-full h-[60px] p-2.5 border-b border-zinc-300 justify-between items-center flex">
-          <div className="self-stretch justify-start items-center gap-[5px] flex">
-            <CheckMarkIcon1 />
-            <span className="text-zinc-800 text-sm font-semibold">
-              1. CUSTOMER ADDRESS
-            </span>
-          </div>
-        </div>
         <div className="w-full p-5 pb-[26px] h-full">
           <div className="flex-col w-full justify-start items-start gap-2.5 flex">
             <label className="cursor-pointer w-full flex flex-col gap-2.5">
