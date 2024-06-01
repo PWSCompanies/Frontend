@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import { CloseIcon } from "../svg/SvgImages";
 import CustomSelect from "./customSelect/CustomSelect";
 import { nigeriaData } from "./customSelect/ListData";
+import {
+  CheckboxInputField,
+  InputField,
+} from "./custom/CustomInputField";
 
 export default function AddNewAddress({ closeModalTwo }) {
   const [selectedState, setSelectedState] = useState("");
@@ -51,98 +55,53 @@ export default function AddNewAddress({ closeModalTwo }) {
         <div className="w-full p-5 pb-[26px] h-full">
           <form className="flex flex-col gap-5">
             <div className="grid grid-cols-2 gap-5">
-              <div className="relative w-full bg-inherit">
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  className="peer w-full h-[60px] px-[21px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600"
-                  placeholder="First Name *"
-                />
-                <label
-                  htmlFor="firstName"
-                  className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
-                >
-                  First Name *
-                </label>
-              </div>
-              <div className="relative w-full bg-inherit">
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  className="peer w-full h-[60px] px-[21px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600"
-                  placeholder="Last Name *"
-                />
-                <label
-                  htmlFor="lastName"
-                  className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
-                >
-                  Last Name *
-                </label>
-              </div>
-              <div className="w-full flex gap-2 items-center">
-                <input
-                  type="text"
-                  value="234"
-                  disabled
-                  className="w-[60px] h-[60px] text-zinc-800 text-sm font-medium pl-3.5 pr-[13px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 justify-center items-center flex"
-                />
-                <div className="relative w-full bg-inherit">
-                  <input
-                    type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    className="peer w-full h-[60px] px-[21px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600"
-                    placeholder="Enter Phone Number"
-                  />
-                  <label
-                    htmlFor="phoneNumber"
-                    className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
-                  >
-                    Enter Phone Number
-                  </label>
-                </div>
-              </div>
-              <div className="w-full flex gap-2 items-center">
-                <input
-                  type="text"
-                  value="234"
-                  disabled
-                  className="w-[60px] h-[60px] text-zinc-800 text-sm font-medium pl-3.5 pr-[13px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 justify-center items-center flex"
-                />
-                <div className="relative w-full bg-inherit">
-                  <input
-                    type="text"
-                    id="phoneNumberTwo"
-                    name="phoneNumberTwo"
-                    className="peer w-full h-[60px] px-[21px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600"
-                    placeholder="Enter Second Phone Number"
-                  />
-                  <label
-                    htmlFor="phoneNumberTwo"
-                    className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
-                  >
-                    Enter Second Phone Number
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="relative w-full bg-inherit">
-              <input
+              <InputField
                 type="text"
-                id="deliveryAddress"
-                name="deliveryAddress"
-                className="peer w-full h-[60px] px-[21px] pt-5 pb-[21px] bg-white rounded-[10px] border border-zinc-300 placeholder-transparent ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600"
-                placeholder="Delivery Address"
+                id="firstName"
+                name="firstName"
+                label="First Name *"
+                placeholder="First Name *"
               />
-              <label
-                htmlFor="deliveryAddress"
-                className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
-              >
-                Delivery Address
-              </label>
+              <InputField
+                type="text"
+                id="lastName"
+                name="lastName"
+                label="Last Name *"
+                placeholder="Last Name *"
+              />
+
+              <div className="w-full flex gap-2 items-center">
+                <div className="w-[90px]">
+                  <InputField value="234" disabled />
+                </div>
+
+                <InputField
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  label="Enter Phone Number"
+                  placeholder="Enter Phone Number"
+                />
+              </div>
+              <div className="w-full flex gap-2 items-center">
+                <div className="w-[90px]">
+                  <InputField value="234" disabled />
+                </div>
+
+                <InputField
+                  id="phoneNumberTwo"
+                  name="phoneNumberTwo"
+                  label="Enter Second Phone Number"
+                  placeholder="Enter Second Phone Number"
+                />
+              </div>
             </div>
+            <InputField
+              type="text"
+              id="deliveryAddress"
+              name="deliveryAddress"
+              label="Delivery Address"
+              placeholder="FDelivery Address"
+            />
             <div className="grid grid-cols-2 gap-5">
               <CustomSelect
                 placeholder="State"
@@ -166,19 +125,10 @@ export default function AddNewAddress({ closeModalTwo }) {
               />
             </div>
             <div className="flex items-center">
-              <input
-                defaultChecked=""
+              <CheckboxInputField
                 id="checked-checkbox"
-                type="checkbox"
-                defaultValue=""
-                className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-green-600 focus:ring-2"
+                label="Set as Default Address"
               />
-              <label
-                htmlFor="checked-checkbox"
-                className="ms-2 text-zinc-800 text-sm font-medium"
-              >
-                Set as Default Address
-              </label>
             </div>
           </form>
         </div>
