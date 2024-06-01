@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { CloseIcon } from "../svg/SvgImages";
-import CustomSelect from "./customSelect/CustomSelect";
-import { nigeriaData } from "./customSelect/ListData";
+import { nigeriaData } from "./ListData";
 import {
   CheckboxInputField,
+  CustomSelect,
   InputField,
-} from "./custom/CustomInputField";
+} from "./CustomComponent";
 
 export default function AddNewAddress({ closeModalTwo }) {
   const [selectedState, setSelectedState] = useState("");

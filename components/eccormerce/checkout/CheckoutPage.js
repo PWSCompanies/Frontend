@@ -8,9 +8,9 @@ import {
 } from "../../../store/cart/cartSlice";
 import { useSelector } from "react-redux";
 import { formatNumberWithCommas } from "../formatNumber";
-import CustomModal from "./customModal/CustomModal";
 import ChangeAddress from "./ChangeAddress";
 import AddNewAddress from "./AddNewAddress";
+import { CustomModal } from "./CustomComponent";
 
 export default function CheckoutPage() {
   const cartItems = useSelector(selectCartItems);
