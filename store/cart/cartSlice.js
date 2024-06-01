@@ -1,12 +1,11 @@
-// cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import { productData } from "../../components/eccormerce/cart/MockData";
 
 const initialState = {
-  items: productData.map((product) => ({ ...product, quantity: 1 })), // Initialize with product data
+  items: productData.map((product) => ({ ...product })), // Initialize with product data
 };
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -38,7 +37,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity, deleteItem, updateProductData} = cartSlice.actions;
+export const { addToCart, incrementQuantity, decrementQuantity, deleteItem, updateProductData } = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
 

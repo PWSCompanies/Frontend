@@ -1,4 +1,4 @@
-import product1 from "../assets/sample1.png"
+import product1 from "../assets/sample1.png";
 
 export const productData = [
   {
@@ -9,6 +9,7 @@ export const productData = [
     price: 12699,
     stock: 4,
     sale: "10",
+    quantity: 1,
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const productData = [
     price: 15500,
     stock: 2,
     sale: "5",
+    quantity: 1,
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ export const productData = [
     price: 8000,
     stock: 10,
     sale: "15",
+    quantity: 1,
   },
   {
     id: 4,
@@ -36,5 +39,6 @@ export const productData = [
     price: 10750,
     stock: 7,
     sale: "8",
+    quantity: 1,
   },
 ];
