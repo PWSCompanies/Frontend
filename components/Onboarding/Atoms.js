@@ -6,10 +6,10 @@ import OtpInput from 'react-otp-input';
 
 
 // Button Atom
-function Button({text,}) {
+function Button({text, bgColor}) {
     return (
-        // Button component JSX
-        <div className="w-[100%] py-4 text-center bg-primary rounded-lg cursor-pointer">
+        // Button component
+        <div className="w-[100%] py-4 text-center rounded-lg cursor-pointer" style={{ backgroundColor: bgColor || '#00BA34' }}>
             <span className="text-textwhite text-center flex justify-center items-center text-sans font-bold">{text}</span>
         </div>
     );
@@ -18,7 +18,7 @@ function Button({text,}) {
 // Login With Card e.g login witb Facebook
 function LoginWithCard({image, text}) {
     return (
-        // SomethingElse component JSX
+        // Login With Card component
         <div className="mt-2">
             <div className="w-[60%] mx-auto text-center flex justify-center border border-bord py-2 rounded-full">
                 <img src={image} alt={text} className="w-5 h-5 mr-4" />
@@ -29,9 +29,17 @@ function LoginWithCard({image, text}) {
 }
 
 // Input Fields
-function InputField({text, type}) {
+function InputField({text, type, onChange }) {
 
     const [isFocused, setIsFocused] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleInputChange = (event) => {
+        const newValue = event.target.value;
+        setInputValue(newValue);
+        onChange(newValue);
+    };
 
     const handleInputFocus = () => {
         setIsFocused(true);
@@ -40,6 +48,11 @@ function InputField({text, type}) {
     const handleInputBlur = () => {
         setIsFocused(false);
     }
+    const togglePasswordVisibility = () => {
+        setShowPassword(prevState => !prevState);
+    };
+
+    const inputType = type === "password" && !showPassword ? "password" : "text";
 
     const labelClass = isFocused ? "top-0 left-16 transform -translate-x-2/4 -translate-y-1/3 text-xs text-textgreen pointer-events-none z-[1111]" : "top-5 left-0 text-xs text-textcol pointer-events-none";
 
@@ -47,44 +60,59 @@ function InputField({text, type}) {
         <div className="w-[63%] mx-auto">
             <div className="relative mt-5">
                 <input 
-                    type={type} 
-                    onFocus={handleInputFocus}
+                    type={inputType}  
+                    value={inputValue}
                     onBlur={handleInputBlur}
+                    onFocus={handleInputFocus}
+                    onChange={handleInputChange}
                     className="w-full px-5 pb-4 outline-none text-2xl leading-20 border border-bord rounded-lg transition-all duration-100 ease z-[1111] focus:outline-none focus:ring-2 focus:ring-textgreen focus:border-transparent valid:border-bord"
                 />
-                <label 
-                    className={`absolute px-5 pb-4 transition-all duration-000 ease bg-white ${labelClass}`}
-                >
-                    {`${text}${isFocused ? '*' : ''}`}
-                </label>
+                {!inputValue && ( // Render label only if text is false
+                    <label className={`absolute px-5 pb-4 transition-all duration-000 ease bg-white ${isFocused ? "top-0 left-16 transform -translate-x-2/4 -translate-y-1/3 text-xs text-textgreen pointer-events-none z-[1111]" : "top-5 left-0 text-xs text-textcol pointer-events-none"}`}>
+                        {`${text}${isFocused ? '*' : ''}`}
+                    </label>
+                )}
+                 {type === "password" && (
+                    <div className="absolute top-0 right-0 h-full flex items-center pr-3 cursor-pointer">
+                        {showPassword ? <p onClick={togglePasswordVisibility} >hide</p> : <p onClick={togglePasswordVisibility} >show</p>}
+                    </div>
+                )}
             </div>
         </div>
     );
 }
 
+// Sign Up Option Card
 function SignUpOptionCard({image, As, text, path}) {
     const router = useRouter();
 
-    const handleClick = () => {
-        router.push(`${path}`);
-        console.log('checking button if working');
+    const [showButton, setShowButton] = useState(false);
+
+    const handleCheckboxChange = (e) => {
+        setShowButton(e.target.checked);
     };
 
     return(
-        <div>
-            <div className="w-[100%] border border-bord rounded-lg">
+        <div style={{ position: 'relative', marginBottom: '2.5rem' }}>
+            <div style={{ transition: 'background-color 0.3s ease-in-out', backgroundColor: showButton ? '#f0fff4' : 'transparent', paddingBottom: showButton ? '20px' : '0',}} className="w-[100%] border border-bord rounded-lg mb-4">
                 <div className="w-5 m-5 ml-auto">
-                    <input type="checkbox" className="rounded-lg" />
+                    <input onChange={handleCheckboxChange} type="checkbox" className="rounded-lg" />
                 </div>
                 <div className="text-center">
                     <img src={image} alt={As} className="mx-auto mb-2" />
                     <span className="font-bold text-textcol text-[20px] p-2">{As}</span>
-                    <p className="m-3">{text}</p>
+                    <div className="px-2 py-3">
+                        <p className="">{text}</p>
+                    </div>
                 </div>
             </div>
-            <div onClick={handleClick} className="w-[30%] m-3 ml-auto">
-                <Button text={'Proceed'} />
-            </div>
+            {
+                showButton && (
+                    <div onClick={()=>{router.push(`${path}`)}} style={{ position: 'absolute', top: '101%', left: '80%', transform: 'translate(-50%, -50%)' }} className="w-[30%] m-3 ml-auto">
+                        <Button text={'Proceed'} bgColor={'#313133'} />
+                    </div>
+                )
+            }
         </div>
     );
 }

@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Atoms from "../Atoms";
-import OnboardingHeader from "../OnboardingHeader";
-
 
 const { Button, LoginWithCard, InputField } = Atoms;
 
- function LoginContainer() {
+function LoginContainer() {
+
+    const [inputValues, setInputValues] = useState({});
+
+    const handleInputChange = (index, value, label) => {
+        setInputValues(prevState => ({
+            ...prevState,
+            [label]: value
+        }));
+    };
+
+    const handleClick = () => {
+        console.log(inputValues);
+    };
+
     return (
         <div>
             <div className="w-[40%] mx-auto mt-16 border border-bord rounded-lg mb-10">
@@ -29,23 +41,24 @@ const { Button, LoginWithCard, InputField } = Atoms;
                 <div className="input field">
                     {
                         LoginOptions.Input.map((item, index) => (
-                            <InputField key={index} type={item.type} text={item.text} />
+                            <InputField type={item.type} text={item.text} onChange={(value) => handleInputChange(index, value, item.text)} />
                         ))
                     }
                 </div>
                 <div className="w-[62%] mt-2 mb-4 mx-auto">
                     <a href="" className="items-start font-semibold text-textgreen"> Forgot Password?</a>
                 </div>
-                <div className="w-[60%] mx-auto mb-2 ">
+                <div onClick={handleClick} className="w-[60%] mx-auto mb-2 ">
                     <Button text={`Sign In`} />
                 </div>
                 <div className="w-[62%] mt-2 mb-4 text-center mx-auto">
-                    <a href="" className="items-start text-center">Don't have an account? <span className="text-textgreen">Create a free account</span></a>
+                    <a href="/auth/signup" className="items-start text-center">Don't have an account? <span className="text-textgreen">Create a free account</span></a>
                 </div>
             </div>
         </div>
     );
 }
+
 export default LoginContainer;
 
 const LoginOptions = {
@@ -70,7 +83,7 @@ const LoginOptions = {
         },
         {
             text: "Password",
-            type: "text"
+            type: "password"
         }
     ]
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Atoms from "../Atoms";
 import { useRouter } from "next/router";
+import usePasswordValidation from "../../../hooks/Validationhooks";
 
 // importing atoms elements
 const { Button, LoginWithCard, InputField, OtpVerify } = Atoms;
@@ -8,11 +9,39 @@ const { Button, LoginWithCard, InputField, OtpVerify } = Atoms;
 export default function SignUpContainer() {
 
     const router = useRouter();
+    const [inputValues, setInputValues] = useState({});
+    const { passwordValid, validatePassword } = usePasswordValidation();
+
+    const textColor = passwordValid ? 'w-[62%] mt-2 mb-0 mx-auto text-textgreen' : 'w-[62%] mt-2 mb-0 mx-auto text-red-500';
+    
+    const handleInputChange = (index, value, label) => {
+        setInputValues(prevState => ({
+            ...prevState,
+            [label]: value
+        }));
+        if (label === "Password") {
+            validatePassword(value); // Validating password on change
+        }
+    };
 
     const handleClick = () => {
+        if (!passwordValid) {
+            console.log("Password does not meet the criteria");
+            return;
+        }
+        if (passwordValid) {
+            console.log(inputValues);
+        }
+
         router.push('/auth/OtpVerify');
-        // console.log('check button if it is working');
-    };
+    }
+
+    const PasswordValidationIndicator = () => {
+        // const textColor = passwordValid ? 'text-textgreen' : 'text-red-500';
+        return (
+            <span className={textColor}></span>
+        );
+    }
 
     return (
         <div>
@@ -38,17 +67,20 @@ export default function SignUpContainer() {
                     {
                         LoginOptions.Input.map((item, index) => (
                             <React.Fragment key={index}>
-                                <InputField type={item.type} text={item.text} />
+                                <InputField type={item.type} text={item.text} onChange={(value) => handleInputChange(index, value, item.text)} />
+                                {item.type === "password" && (
+                                    <PasswordValidationIndicator />
+                                )}
                                 {index === LoginOptions.Input.length - 2 && 
-                                <div className="w-[62%] mt-2 mb-4 mx-auto"> 
-                                <div className="flex gap-2">
-                                    <img src="/eccormerce/good.svg" alt="" />
-                                    <p>8 or more characters</p>
-                                </div>
-                                <div className="flex gap-2">
-                                    <img src="/eccormerce/good.svg" alt="" />
-                                    <p>Has a symbol, number, or upper-case letter</p>
-                                </div>
+                                <div className={`${textColor}`}> 
+                                    <div className={`text-xs flex gap-2 mb-1 `}>
+                                        <img src="/eccormerce/good.svg" alt="" />
+                                        <p>Has a symbol, number and upper-case letter</p>
+                                    </div>
+                                    <div className={`text-xs flex gap-2 mb-1`}>
+                                        <img src="/eccormerce/good.svg" alt="" />
+                                        <p>8 or more characters</p>
+                                    </div>
                                 </div>}
                             </React.Fragment>
                         ))
@@ -61,7 +93,7 @@ export default function SignUpContainer() {
                     <Button text={`Sign In`} />
                 </div>
                 <div className="w-[62%] mt-2 mb-4 text-center mx-auto">
-                    <a href="" className="items-start text-center">Already have an account? <span className="text-textgreen">Login</span></a>
+                    <a href="/auth/login" className="items-start text-center">Already have an account? <span className="text-textgreen">Login</span></a>
                 </div>
             </div>
         </div>
@@ -106,11 +138,11 @@ const LoginOptions = {
         },
         {
             text: "Password",
-            type: "text"
+            type: "password"
         },
         {
             text: "Password",
-            type: "text"
+            type: "password"
         }
     ]
 };

@@ -10,7 +10,9 @@ export default function OnboardingHeader() {
                 <img src="/logo.svg" alt="" />
             </div>
             <div className="w-24 h-12">
-                <Button text={`Register`}/>
+                <a href="/auth/SignUpChoice">
+                    <Button text={`Register`}/>
+                </a>
             </div>
         </div>
     );

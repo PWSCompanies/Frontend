@@ -7,12 +7,12 @@ const { SignUpOptionCard } = Atoms;
 export default function SignUpOption() {
     return(
         <div>
-            <div className="w-[75%] mx-auto mt-14 border border-bord rounded-lg mb-10">
+            <div className="w-[75%] mx-auto mt-14 rounded-lg mb-10">
                 <div className="w-[50%] mx-auto text-center">
                     <h3 className="font-semibold text-2xl text-sans mb-2 mt-6">What are you signing Up as</h3>
                     <p>Choose your category to precisely define your role and gain access to the relevant features of PWC</p>
                 </div>
-                <div className=" w-[80%] mx-auto flex gap-4 mt-6">
+                <div className=" w-[85%] mx-auto flex gap-4 align-items-center mt-6">
                     {
                         SignUpData.map((data, index) => (
                             <SignUpOptionCard key={index} image={data.image} As={data.As} text={data.text} path={data.path}/>
