@@ -65,7 +65,7 @@ export default function OtpVerify() {
                     <div onClick={openModal} className="mt-4 mb-2">
                         <Button text={'Apply'} />
                     </div>
-                        Haven't received the verification code yet? Sometimes it takes a moment. You can request a new code in just
+                        Haven&apos;,t received the verification code yet? Sometimes it takes a moment. You can request a new code in just
                         <span className="text-textgreen fonr-semibold"> 2 seconds</span>.
                     </>
                 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Atoms from "../Atoms";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import usePasswordValidation from "../../../hooks/Validationhooks";
 
@@ -87,13 +88,21 @@ export default function SignUpContainer() {
                     }
                 </div>
                 <div className="w-[62%] mt-2 mb-4 mx-auto">
-                    <a href="" className="items-start font-semibold"> By clicking the 'Create Account' button below, you agree to the <span className="text-textgreen">PWC Terms of Use</span> and <span className="text-textgreen">Privacy Policy.</span></a>
+                    <Link href="">
+                        <a className="items-start font-semibold">
+                            By clicking the &apos;Create Account&apos; button below, you agree to the <span className="text-textgreen">PWC Terms of Use</span> and <span className="text-textgreen">Privacy Policy.</span>
+                        </a>
+                    </Link>    
                 </div>
                 <div onClick={handleClick} className="w-[60%] mx-auto mb-2 ">
                     <Button text={`Sign In`} />
                 </div>
                 <div className="w-[62%] mt-2 mb-4 text-center mx-auto">
-                    <a href="/auth/login" className="items-start text-center">Already have an account? <span className="text-textgreen">Login</span></a>
+                    <Link href="/auth/login">
+                        <a className="items-start text-center">
+                            Already have an account? <span className="text-textgreen">Login</span>
+                        </a>
+                    </Link>    
                 </div>
             </div>
         </div>

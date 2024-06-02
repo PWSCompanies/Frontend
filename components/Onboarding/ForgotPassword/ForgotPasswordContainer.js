@@ -52,7 +52,7 @@ export default function ForgotPasswordContainer() {
                     <Button text={'Send Reset Link'} />
                 </div>
                 <div className="text-center font-semibold mb-4">
-                    <p>Don't have an account? <span className="text-textgreen">Create a free account</span></p>
+                    <p>Don&apos;,t have an account? <span className="text-textgreen">Create a free account</span></p>
                 </div>
             </div>
             <div className=" mx-auto">

@@ -172,4 +172,7 @@ function VerifySuccesfull({title, text}) {
     );
 }
 
-export default { Button, LoginWithCard, InputField, SignUpOptionCard, OtpVerifyCard, VerifySuccesfull };
+const OnboardingAtoms = { Button, LoginWithCard, InputField, SignUpOptionCard, OtpVerifyCard, VerifySuccesfull };
+
+export default OnboardingAtoms;
+

@@ -1,5 +1,6 @@
 import React from "react";
 import Atoms from "./Atoms";
+import Link from "next/link";
 
 const { Button } = Atoms;
 
@@ -10,9 +11,11 @@ export default function OnboardingHeader() {
                 <img src="/logo.svg" alt="" />
             </div>
             <div className="w-24 h-12">
-                <a href="/auth/SignUpChoice">
-                    <Button text={`Register`}/>
-                </a>
+                <Link href="/auth/SignUpChoice">
+                    <a>
+                        <Button text={`Register`}/>
+                    </a>
+                </Link>
             </div>
         </div>
     );

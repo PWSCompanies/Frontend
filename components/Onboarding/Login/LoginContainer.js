@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Atoms from "../Atoms";
+import Link from "next/link";
 
 const { Button, LoginWithCard, InputField } = Atoms;
 
@@ -41,18 +42,24 @@ function LoginContainer() {
                 <div className="input field">
                     {
                         LoginOptions.Input.map((item, index) => (
-                            <InputField type={item.type} text={item.text} onChange={(value) => handleInputChange(index, value, item.text)} />
+                            <InputField key={index} type={item.type} text={item.text} onChange={(value) => handleInputChange(index, value, item.text)} />
                         ))
                     }
                 </div>
                 <div className="w-[62%] mt-2 mb-4 mx-auto">
-                    <a href="" className="items-start font-semibold text-textgreen"> Forgot Password?</a>
+                    <Link href="/auth/forgotPassword">
+                        <a className="items-start font-semibold text-textgreen"> Forgot Password?</a>
+                    </Link>
                 </div>
                 <div onClick={handleClick} className="w-[60%] mx-auto mb-2 ">
                     <Button text={`Sign In`} />
                 </div>
                 <div className="w-[62%] mt-2 mb-4 text-center mx-auto">
-                    <a href="/auth/signup" className="items-start text-center">Don't have an account? <span className="text-textgreen">Create a free account</span></a>
+                    <Link href="/auth/signup">
+                        <a className="items-start text-center">
+                            Don&apos;t have an account? <span className="text-textgreen">Create a free account</span>
+                        </a>
+                    </Link>
                 </div>
             </div>
         </div>
