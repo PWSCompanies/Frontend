@@ -13,6 +13,7 @@ import { CartIcon1 } from "../svg/SvgImages";
 import { formatNumberWithCommas } from "../formatNumber";
 import CartItem from "./CartItem";
 import { useRouter } from "next/router";
+import { Button } from "./CustomComponent";
 
 export default function CartPage() {
   const cartItems = useSelector(selectCartItems);
@@ -30,10 +31,10 @@ export default function CartPage() {
   const handleCheckout = () => router.push("/checkout");
 
   return (
-    <div className="w-[100%] px-[120px] py-[30px] bg-neutral-100">
-      <div className="mx-auto max-w-[1200px] flex justify-between gap-4">
-        <div className="w-[71%] bg-white rounded-[10px] shadow border overflow-hidden">
-          <div className="w-[100%] pl-5 py-[19px] bg-white border-b border-zinc-300 justify-start items-center flex">
+    <div className="w-[100%] px-4 md:px-[50px] lg:px-[120px] py-[30px] bg-neutral-100">
+      <div className="mx-auto max-w-[1200px] flex-col lg:flex-row flex justify-between gap-4">
+        <div className="w-[100%] lg:w-[71%] bg-white rounded-[10px] shadow border">
+          <div className="w-[100%] pl-5 py-[19px] bg-white border-b rounded-t-[10px] border-zinc-300 justify-start items-center flex">
             <span className="text-zinc-800 text-base font-semibold">
               Cart ({cartItems.length})
             </span>
@@ -63,8 +64,8 @@ export default function CartPage() {
           </div>
         </div>
 
-        <div className="w-[29%] h-[304px] bg-white rounded-[10px] overflow-hidden shadow">
-          <div className="pl-5 w-[100%] py-[19px] bg-white border-b border-zinc-300 justify-start items-center flex">
+        <div className="w-[100%] lg:w-[29%] h-[304px] bg-white rounded-[10px] shadow">
+          <div className="pl-5 w-[100%] py-[19px] bg-white border-b rounded-t-[10px] border-zinc-300 justify-start items-center flex">
             <span className="text-zinc-800 text-base font-semibold">
               Order Summary
             </span>
@@ -83,14 +84,16 @@ export default function CartPage() {
               ₦{formatNumberWithCommas(subtotal)}
             </p>
           </div>
-          <div className="w-full h-[85px] px-5 pt-[18px] pb-[17px] bg-white border-b border-zinc-300 justify-center items-center flex">
-            <button
-              className={`grow shrink text-center text-white text-sm font-semibold basis-0 self-stretch pt-[17px] pb-4 bg-green-600 rounded-[10px] justify-center items-center flex ${cartItems.length === 0 ? "bg-[#b6ecb6]" : ""}`}
+          <div className="w-full h-[85px] px-5 pt-[18px] pb-[17px] bg-white rounded-b-[10px] border-b border-zinc-300 justify-center items-center flex">
+            <Button
               disabled={cartItems.length === 0}
               onClick={handleCheckout}
+              customStyles={{
+                customClasses: "w-full h-[50px]",
+              }}
             >
               CHECK OUT (₦{formatNumberWithCommas(subtotal)})
-            </button>
+            </Button>
           </div>
         </div>
       </div>

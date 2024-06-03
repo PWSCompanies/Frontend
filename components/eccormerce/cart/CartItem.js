@@ -4,9 +4,9 @@ import { FlameIcon, PlusIcon, MinusIcon, DeleteIcon } from "../svg/SvgImages";
 import { formatNumberWithCommas } from "../formatNumber";
 
 const CartItem = ({ product, onIncrement, onDecrement, onDelete }) => (
-  <div className="cart-item flex items-center justify-between min-h-[153px] px-5 py-[23px] bg-white border-b border-zinc-300">
+  <div className="last:rounded-b-[10px] flex items-start md:items-center  relative justify-between min-h-[153px] px-5 py-[23px] bg-white border-b border-zinc-300">
     <div className="flex gap-2">
-      <div className="relative w-[108px] h-[98px] bg-black/opacity-5">
+      <div className="relative max-w-[108px] h-[98px] bg-black/opacity-5">
         <Image
           src={product.imageSrc}
           width={100}
@@ -16,8 +16,11 @@ const CartItem = ({ product, onIncrement, onDecrement, onDelete }) => (
         />
       </div>
       <div className="flex flex-col justify-between gap-1">
-        <div>
-          <div className="text-base font-medium text-zinc-800">
+        <span className="text-sm sm:text-base block sm:hidden font-semibold text-zinc-800">
+          ₦{formatNumberWithCommas(product.price)}
+        </span>
+        <div className="">
+          <div className="text-sm sm:text-base font-medium text-zinc-800">
             {product.name}
           </div>
           <div className="text-sm text-neutral-600">
@@ -51,26 +54,26 @@ const CartItem = ({ product, onIncrement, onDecrement, onDelete }) => (
             <DeleteIcon />
           </button>
         </div>
-      </div>
-    </div>
-    <div className="flex flex-col items-end gap-3 w-[30%]">
-      <span className="text-base font-semibold text-zinc-800">
-        ₦{formatNumberWithCommas(product.price)}
-      </span>
-      <div className="flex gap-3">
-        <div className="flex items-center w-[114px] h-[26px] px-2.5 py-[5px] bg-rose-600/5 rounded-full">
-          <FlameIcon />
-          <div className="text-xs font-normal text-zinc-800">
-            {product.stock} pcs in store
+        <div className="flex gap-3 relative md:absolute top-0 md:top-[100px] right-0 mt-3 md:mt-0 md:right-[17px]">
+          <div className="flex items-center w-[114px] h-[26px] px-2.5 py-[5px] bg-rose-600/5 rounded-full">
+            <FlameIcon />
+            <div className="text-xs font-normal text-zinc-800">
+              {product.stock} pcs in store
+            </div>
+          </div>
+          <div className="flex items-center w-[114px] h-[26px] px-2.5 py-[5px] bg-green-600/5 rounded-full">
+            <span className="text-xs font-normal text-green-600">Sale</span>
+            <span className="text-xs font-normal text-neutral-600">
+              {product.sale} days
+            </span>
           </div>
         </div>
-        <div className="flex items-center w-[114px] h-[26px] px-2.5 py-[5px] bg-green-600/5 rounded-full">
-          <span className="text-xs font-normal text-green-600">Sale</span>
-          <span className="text-xs font-normal text-neutral-600">
-            {product.sale} days
-          </span>
-        </div>
       </div>
+    </div>
+    <div className="hidden sm:flex flex-col items-end gap-3 w-[30%]">
+      <span className="text-sm sm:text-base font-semibold text-zinc-800">
+        ₦{formatNumberWithCommas(product.price)}
+      </span>
     </div>
   </div>
 );

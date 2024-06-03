@@ -20,6 +20,7 @@ const MyApp = ({ Component, pageProps }) => {
     "/auth/forgotPassword",
     "/cart",
     "/checkout",
+    "/contactus",
   ];
 
   return (

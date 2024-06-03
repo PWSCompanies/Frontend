@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { CheckMarkIcon1, CloseIcon } from "../svg/SvgImages";
 
-export const InputField = ({
+export const FloatInputField = ({
   id,
   name,
   label,
@@ -25,10 +25,74 @@ export const InputField = ({
       />
       <label
         htmlFor={id}
-        className="absolute cursor-text left-0 -top-3 text-zinc-500 text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
+        className="absolute cursor-text left-0 -top-3 text-zinc-500 bg-white text-sm font-medium bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-focus:bg-white peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:left-3 peer-focus:-top-3 peer-focus:text-green-600 peer-focus:text-sm transition-all"
       >
         {label}
       </label>
+    </div>
+  );
+};
+
+export const InputField = ({
+  id,
+  name,
+  label,
+  disabled,
+  type = 'text',
+  value,
+  onChange,
+  placeholder = "",
+  className = "",
+  containerStyle = "",
+  labelClassName = ""
+}) => {
+  return (
+    <div className={`relative w-full bg-inherit ${containerStyle}`}>
+      <label htmlFor={id} className={`block mb-2 text-zinc-800 text-sm font-medium ${labelClassName}`}>
+        {label}
+      </label>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`text-neutral-600 text-sm font-normal w-full h-[55px] sm:h-[60px] bg-white rounded-[10px] border border-zinc-300 placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${disabled ? '' : ''} ${className}`}
+        placeholder={placeholder}
+        disabled={disabled}
+      />
+    </div>
+  );
+};
+
+export const TextAreaField = ({
+  id,
+  name,
+  label,
+  disabled,
+  type = 'text',
+  value,
+  onChange,
+  placeholder = "",
+  className = "",
+  containerStyle = "",
+  labelClassName = ""
+}) => {
+  return (
+    <div className={`relative w-full bg-inherit ${containerStyle}`}>
+      <label htmlFor={id} className={`block mb-2 text-sm font-medium text-gray-700 ${labelClassName}`}>
+        {label}
+      </label>
+      <textarea
+        type={type}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`text-neutral-600 text-sm font-normal w-full h-[130px] bg-white rounded-[10px] border border-zinc-300 resize-none placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${disabled ? '' : ''} ${className}`}
+        placeholder={placeholder}
+        disabled={disabled}
+      />
     </div>
   );
 };
@@ -76,24 +140,28 @@ export const Modal = ({
 
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black bg-opacity-50">
-      <div className="bg-white relative rounded-[10px] overflow-hidden shadow-lg">
-        <div className="w-full h-[60px] z-10 bg-white absolute left-0 right-0 top-0 p-5 border-b border-zinc-300 justify-between items-center flex">
-          <div className="self-stretch w-full justify-between items-center gap-[5px] flex">
-            <div className="self-stretch justify-start items-center gap-[5px] flex">
-              {showCheckedIcon && <CheckMarkIcon1 />}
-              <span className="text-zinc-800 text-sm font-semibold">
-                {title}
-              </span>
+    <div className="fixed inset-0 z-50 backdrop-blur-md px-4 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="relative w-full ">
+        <div className="mx-auto max-w-[830px] bg-white rounded-[10px] overflow-hidden">
+          <div className="clear-both relative">
+            <div className="w-full h-[60px] z-10 bg-white absolute left-0 right-0 top-0 p-5 border-b border-zinc-300 justify-between items-center flex">
+              <div className="self-stretch w-full justify-between items-center gap-[5px] flex">
+                <div className="self-stretch justify-start items-center gap-[5px] flex">
+                  {showCheckedIcon && <CheckMarkIcon1 />}
+                  <span className="text-zinc-800 text-sm font-semibold">
+                    {title}
+                  </span>
+                </div>
+                {showCloseIcon && (
+                  <button onClick={onClose} className="float-right">
+                    <CloseIcon className="text-black w-6 h-6" />
+                  </button>
+                )}
+              </div>
             </div>
-            {showCloseIcon && (
-              <button onClick={onClose} className="float-right">
-                <CloseIcon className="text-black w-6 h-6" />
-              </button>
-            )}
+            <main className="pt-[60px] bg-white">{children}</main>
           </div>
         </div>
-        <div className="clear-both mt-[60px]">{children}</div>
       </div>
     </div>
   );

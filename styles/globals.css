@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Text&family=Inter:wght@100;500&family=Lato&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+.contact-us{
+    background-image: url("../components/eccormerce/contactus/assets/contact-img.png");
+    background-size: 100% 100%;
+}

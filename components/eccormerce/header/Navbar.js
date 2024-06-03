@@ -4,7 +4,7 @@ import Navigate from "./Navigate";
 
 function Navbar() {
   return (
-    <div className="py-2">
+    <div className="">
       <Top />
       <Navigate />
     </div>

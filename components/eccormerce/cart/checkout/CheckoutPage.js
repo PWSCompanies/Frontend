@@ -11,6 +11,7 @@ import { formatNumberWithCommas } from "../../formatNumber";
 import ChangeAddress from "./ChangeAddress";
 import AddNewAddress from "./AddNewAddress";
 import { Button, Modal } from "../CustomComponent";
+import EditAddress from "./EditAddress";
 
 export default function CheckoutPage() {
   const cartItems = useSelector(selectCartItems);
@@ -19,18 +20,21 @@ export default function CheckoutPage() {
   const total = subtotal + deliveryFee;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalTwoOpen, setIsModalTwoOpen] = useState(false);
+  const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false);
+  const [isEditAddModalOpen, setIsEditAddModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const openModalTwo = () => setIsModalTwoOpen(true);
-  const closeModalTwo = () => setIsModalTwoOpen(false);
+  const openAddNewModal = () => setIsAddNewModalOpen(true);
+  const closeAddNewModal = () => setIsAddNewModalOpen(false);
+  const openEditAddModal = () => setIsEditAddModalOpen(true);
+  const closeEditAddModal = () => setIsEditAddModalOpen(false);
 
   return (
-    <div className="w-[100%] px-[120px] py-[30px] bg-neutral-100">
-      <div className="mx-auto max-w-[1200px] flex justify-between gap-4">
-        <div className="w-[71%] flex flex-col gap-[20px]">
-          <div className="w-full min-h-[307px] bg-white rounded-[10px] shadow overflow-hidden">
+    <div className="w-[100%] px-4 md:px-[50px] lg:px-[120px] py-[30px] bg-neutral-100">
+      <div className="mx-auto max-w-[1200px] flex flex-col lg:flex-row justify-between gap-4">
+        <div className="w-[100%] lg:w-[71%] flex flex-col gap-[20px]">
+          <div className="w-full bg-white rounded-[10px] shadow overflow-hidden">
             <div className="w-full h-[60px] p-2.5 border-b border-zinc-300 justify-between items-center flex">
               <div className="self-stretch justify-start items-center gap-[5px] flex">
                 <CheckMarkIcon1 />
@@ -65,12 +69,12 @@ export default function CheckoutPage() {
                   <span className="text-zinc-800 text-sm font-medium">
                     Delivery Instruction
                   </span>
-                  <textarea className="w-full h-[116px] resize-none relative bg-white rounded-[10px] border border-zinc-300" />
+                  <textarea className="w-full h-[70px] md:h-[116px] resize-none relative bg-white rounded-[10px] border border-zinc-300" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-full min-h-[161px] bg-white rounded-[10px] shadow overflow-hidden">
+          <div className="w-full bg-white rounded-[10px] shadow overflow-hidden">
             <div className="w-full h-[60px] p-2.5 border-b border-zinc-300 justify-between items-center flex">
               <div className="self-stretch justify-start items-center gap-[5px] flex">
                 <CheckMarkIcon1 />
@@ -97,7 +101,7 @@ export default function CheckoutPage() {
               </div>
             </div>
           </div>
-          <div className="w-full min-h-[222px] bg-white rounded-[10px] shadow overflow-hidden">
+          <div className="w-full bg-white rounded-[10px] shadow overflow-hidden">
             <div className="w-full h-[60px] p-2.5 border-b border-zinc-300 justify-between items-center flex">
               <div className="self-stretch justify-start items-center gap-[5px] flex">
                 <CheckMarkIcon1 />
@@ -107,12 +111,12 @@ export default function CheckoutPage() {
               </div>
             </div>
             <div className="w-full p-5 flex gap-2 pb-[26px] h-full">
-              <div className="w-[209px] overflow-hidden h-[99px] relative bg-green-600/5 rounded-[20px] border border-green-600">
+              <div className="w-[150px] md:w-[209px] overflow-hidden h-[70px] md:h-[99px] relative bg-green-600/5 rounded-[13px] md:rounded-[20px] border border-green-600">
                 <label
                   htmlFor="paystack"
                   className="w-full h-full cursor-pointer border flex items-center justify-center text-sm font-medium text-gray-900"
                 >
-                  <PaystackLogo />
+                  <PaystackLogo className="w-[100px] relative top-[4px] md:top-0 md:w-[133px]" />
                 </label>
                 <input
                   checked
@@ -120,14 +124,14 @@ export default function CheckoutPage() {
                   type="radio"
                   defaultValue=""
                   name="paystack"
-                  className="w-4 h-4 p-1 absolute top-2 right-4 border text-green-600 border-green-600/5 focus:ring-transparent focus:ring-2"
+                  className="w-4 h-4 p-1 absolute top-2 right-2 md:right-4 border text-green-600 border-green-600/5 focus:ring-transparent focus:ring-2"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="w-[29%] h-[297px] bg-white rounded-[10px] overflow-hidden shadow">
+        <div className="w-[100%] lg:w-[29%] h-[297px] bg-white rounded-[10px] overflow-hidden shadow">
           <div className="pl-5 w-[100%] py-[19px] bg-white border-b border-zinc-300 justify-start items-center flex">
             <span className="text-zinc-800 text-base font-semibold">
               Order Summary
@@ -167,19 +171,29 @@ export default function CheckoutPage() {
         isOpen={isModalOpen}
         onClose={closeModal}
         title="1. CUSTOMER ADDRESS"
-        showCloseIcon={true}
-        showCheckedIcon={false}
+        showCloseIcon={false}
       >
-        <ChangeAddress closeModal={closeModal} openModalTwo={openModalTwo} />
+        <ChangeAddress closeModal={closeModal} openAddNewModal={openAddNewModal} openEditAddModal={openEditAddModal} />
       </Modal>
 
       <Modal
-        isOpen={isModalTwoOpen}
-        onClose={closeModalTwo}
+        isOpen={isAddNewModalOpen}
+        onClose={closeAddNewModal}
         title="ADD NEW ADDRESS"
-        showCloseIcon={false}
+        showCloseIcon={true}
+        showCheckedIcon={false}
       >
-        <AddNewAddress closeModalTwo={closeModalTwo} />
+        <AddNewAddress closeAddNewModal={closeAddNewModal} />
+      </Modal>
+
+      <Modal
+        isOpen={isEditAddModalOpen}
+        onClose={closeEditAddModal}
+        title="EDIT ADDRESS"
+        showCloseIcon={true}
+        showCheckedIcon={false}
+      >
+        <EditAddress closeEditAddModal={closeEditAddModal} />
       </Modal>
     </div>
   );

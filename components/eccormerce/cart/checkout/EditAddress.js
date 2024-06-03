@@ -10,13 +10,13 @@ import {
   InputField,
 } from "../CustomComponent";
 
-export default function AddNewAddress({ closeAddNewModal }) {
+export default function EditAddress({ closeEditAddModal }) {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
+    firstName: "Nelson",
+    lastName: "Michael",
+    phoneNumber: "90843757334",
     phoneNumberTwo: "",
-    deliveryAddress: "",
+    deliveryAddress: "IITA | IBADAN-OJOO - Oyo",
     state: "",
     city: "",
     lga: "",
@@ -76,7 +76,7 @@ export default function AddNewAddress({ closeAddNewModal }) {
     <div className="relative rounded-[10px]">
       <div className="w-full max-h-[550px] min-h-[200px] overflow-y-auto">
         <div className="w-full border h-full">
-          <form className="pb-20" onSubmit={handleSubmit}>
+        <form className="pb-20" onSubmit={handleSubmit}>
             <div className="p-5">
               <div className="flex flex-col gap-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -105,7 +105,7 @@ export default function AddNewAddress({ closeAddNewModal }) {
             </div>
             <div className="w-full rounded-b-[10px] absolute left-0 bottom-0 right-0 pr-5 py-2.5 bg-white border-t border-zinc-300 justify-end mt-[42px] items-center flex">
               <div className="self-stretch justify-start items-center gap-[15px] flex">
-                <Button type="button" onClick={closeAddNewModal}
+                <Button type="button" onClick={closeEditAddModal}
                   customStyles={{
                     padding: "p-0",
                     bgColor: "bg-white",
