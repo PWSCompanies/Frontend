@@ -26,6 +26,9 @@ const MyApp = ({ Component, pageProps }) => {
   ];
   const requireAuth = [
     "/",
+    "/cart",
+    "/checkout",
+    "/contactus",
   ];
 
   return (

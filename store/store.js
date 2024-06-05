@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import { userReducer } from "./users/userSlice";
 import { productReducer } from "./products/productSlice";
+import { cartReducer } from "./cart/cartSlice";
 // import adminReducer from "./admin/adminSlice";
 // import userReducer from "./user/userSlice";
 // import toggleReducer from "./toggleSlice";
@@ -29,6 +30,7 @@ const persistConfig = {
 const reducers = combineReducers({
   user: userReducer,
   product: productReducer,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
