@@ -23,16 +23,23 @@ const { Button, InputField, VerifySuccesfull } = Atoms;
 export default function Newpassword() {
 
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setconfirmPassword] = useState('');
+
+    const handleInputChange = ( value) => {
+        console.log(value); // Add this line to check the value received
+        setPassword(value);
+        setconfirmPassword(value)
+    };
 
     // Functions to open and close modal
-    function openModal() {
+    const openModal = () => {
         setIsOpen(true);
-        // setSuccessIsOpen(false);
-      }
-    function closeModal() {
-        setIsOpen(false);
-        // setSuccessIsOpen(false);
-      }
+        console.log(password);
+        console.log(confirmPassword);
+    }
+    const closeModal =() => setIsOpen(false);
+
 
     return(
         <div>
@@ -43,10 +50,10 @@ export default function Newpassword() {
                     <p className="text-textcol">Insert your new password</p>
                 </div>
                 <div className="mt-8 mb-0">
-                    <InputField type={'text'} text={'Password'} />
+                    <InputField type={'text'} text={'Password'} onChange={(value) => handleInputChange(value)} />
                 </div>
                 <div className="mt-0">
-                    <InputField type={'text'} text={'Password'} />
+                    <InputField type={'text'} text={'Password'} onChange={(value) => handleInputChange(value)} />
                 </div>
                 <div className="w-[62%] mt-2 mb-4 mx-auto"> 
                     <div className="flex gap-2">

@@ -117,8 +117,8 @@ function SignUpOptionCard({image, As, text, path}) {
     );
 }
 
-function OtpVerifyCard({title, subtext, belowText }) {
-    const [otp, setOtp] = useState('');
+function OtpVerifyCard({title, subtext, belowText, onChange }) {
+    const [otpValue, setOtpValue] = useState("");
 
     const inputStyle = {
         width: '60px',
@@ -131,6 +131,12 @@ function OtpVerifyCard({title, subtext, belowText }) {
         outline: 'none',
     };
 
+    const handleOtpChange = (newValue) => {
+        setOtpValue(newValue)
+        onChange(newValue);
+        // console.log(otpValue);
+    };
+
     return(
         <div>
             <div className="w-full mx-auto border mb-4 rounded-lg">
@@ -141,8 +147,8 @@ function OtpVerifyCard({title, subtext, belowText }) {
                 </div>
                 <div className="w-[80%] mx-auto">
                     <OtpInput
-                    value={otp}
-                    onChange={setOtp}
+                    value={otpValue}
+                    onChange={handleOtpChange}
                     numInputs={6}
                     inputStyle={inputStyle}
                     // renderSeparator={<span>-</span>}
@@ -151,7 +157,7 @@ function OtpVerifyCard({title, subtext, belowText }) {
                 </div>
                 <div className="w-[60%] mx-auto text-center mt-4 mb-2">
                     <p>{belowText}</p>
-                </div>
+                </div> 
             </div>
         </div>
     );

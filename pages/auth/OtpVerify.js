@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import Atoms from "../../components/Onboarding/Atoms";
+import { enqueueSnackbar } from "notistack";
 
 const customStyles = {
     overlay: {
@@ -29,6 +30,8 @@ export default function OtpVerify() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [successIsOpen, setSuccessIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+//   const [inputValues, setInputValues] = useState({});
+   const [otpValue, setOtpValue] = useState("");
 
   // Function to handle option change for select values
   const handleOptionChange = (event) => {
@@ -36,22 +39,27 @@ export default function OtpVerify() {
   };
 
     // Functions to open and close modal
-    function openModal() {
-        setIsOpen(true);
-        // setSuccessIsOpen(false);
-      }
-    function closeModal() {
-        setIsOpen(false);
-        // setSuccessIsOpen(false);
-      }
-    function SuccessOpen(){
-        setIsOpen(false);
-        setSuccessIsOpen(true);
-    }
-    function SuccessClose(){
-        setSuccessIsOpen(false);
-        setIsOpen(false);
-    }
+    const openModal = () => setIsOpen(false);
+    const closeModal = () => setIsOpen(false);
+    const SuccessOpen = () => setSuccessIsOpen(true)
+    const SuccessClose = () => setSuccessIsOpen(false);
+
+
+    const handleOtpChange = (otp) => {
+        const fakeotp = '123456'; 
+        setOtpValue(otp);
+        if (otp.length === 6) {
+            if (otp === fakeotp) {
+                console.log('OTP verified successfully');
+                enqueueSnackbar('OTP verified successfully', { variant: 'success' });
+                setIsOpen(true);
+            } else {
+                console.log('Incorrect OTP. Please check and try again');
+                enqueueSnackbar('Incorrect OTP. Please check and try again', { variant: 'error' });
+                enqueueSnackbar('Enter 123456 as OTP', { variant: 'error' });
+            }
+        }
+    };
 
 
     return(
@@ -60,12 +68,13 @@ export default function OtpVerify() {
                 <OtpVerifyCard 
                 title="Verifivation Code"
                 subtext="We have sent a verification code to shallommike@gmail.com"
+                onChange={handleOtpChange} 
                 belowText={
                     <>
                     <div onClick={openModal} className="mt-4 mb-2">
                         <Button text={'Apply'} />
                     </div>
-                        Haven&apos;,t received the verification code yet? Sometimes it takes a moment. You can request a new code in just
+                        Haven&apos;t received the verification code yet? Sometimes it takes a moment. You can request a new code in just
                         <span className="text-textgreen fonr-semibold"> 2 seconds</span>.
                     </>
                 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Atoms from "../Atoms";
 import Modal from 'react-modal';
 import { useRouter } from "next/router";
+import { enqueueSnackbar } from "notistack";
 
 const customStyles = {
     overlay: {
@@ -26,16 +27,38 @@ export default function ForgotPasswordContainer() {
     const router = useRouter();
 
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [otpValue, setOtpValue] = useState("");
+    const [inputValues, setInputValues] = useState('');
+
+    const handleInputChange = ( value) => {
+        console.log(value); // Add this line to check the value received
+        setInputValues(value);
+    };
+
 
         // Functions to open and close modal
-        function openModal() {
+        const openModal = () => {
+            console.log(inputValues);
             setIsOpen(true);
-            // setSuccessIsOpen(false);
-          }
-        function closeModal() {
-            setIsOpen(false);
-            // setSuccessIsOpen(false);
-          }
+        }
+        const closeModal = () => setIsOpen(false);
+
+
+          const handleOtpChange = (otp) => {
+            const fakeotp = '123456'; 
+            setOtpValue(otp);
+            if (otp.length === 6) {
+                if (otp === fakeotp) {
+                    console.log('OTP verified successfully');
+                    enqueueSnackbar('OTP verified successfully', { variant: 'success' });
+                    router.push(`/auth/Newpassword`);
+                } else {
+                    console.log('Incorrect OTP. Please check and try again');
+                    enqueueSnackbar('Incorrect OTP. Please check and try again', { variant: 'error' });
+                    enqueueSnackbar('Enter 123456 as OTP', { variant: 'error' });
+                }
+            }
+        };
 
     return(
         <div>
@@ -46,13 +69,13 @@ export default function ForgotPasswordContainer() {
                     <p className="text-textgreen bg-primary bg-opacity-5 rounded-lg mb-2 pt-2 pb-2 px-3">You can request a password reset below. We will send a security code to the email address, please make sure it is correct.</p>
                 </div>
                 <div className="mt-8">
-                    <InputField type={'text'} text={'Email Address'} />
+                    <InputField type={'text'} text={'Email Address'} onChange={(value) => handleInputChange(value)} />
                 </div>
                 <div onClick={openModal} className="w-[65%] mt-4 mb-2 mx-auto">
                     <Button text={'Send Reset Link'} />
                 </div>
                 <div className="text-center font-semibold mb-4">
-                    <p>Don&apos;,t have an account? <span className="text-textgreen">Create a free account</span></p>
+                    <p>Don&apos;t have an account? <span className="text-textgreen">Create a free account</span></p>
                 </div>
             </div>
             <div className=" mx-auto">
@@ -67,9 +90,10 @@ export default function ForgotPasswordContainer() {
                             <OtpVerifyCard 
                             title={'Security code to reset password'} 
                             subtext={'Insert the security code sent to your email in order to proceed with the password reset.'}
+                            onChange={handleOtpChange}
                             belowText={
                                 <>
-                                <div onClick={()=> {router.push(`/auth/Newpassword`);}}>
+                                <div>
                                     <Button text={'Submit'} />
                                 </div>
                                 <p className="text-textgreen font-semibold">Request a new a code</p>

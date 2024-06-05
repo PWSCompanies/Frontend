@@ -11,6 +11,7 @@ import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
 import DashboardLayout from "../components/dashboard/layout/DashboardLayout";
 import ProtectedRoute from "../components/dashboard/ProtectedRoute";
 import Onboardinglayout from "../components/Onboarding/layout/Onboardinglayout";
+import { SnackbarProvider } from "notistack";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -30,6 +31,13 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
+      <SnackbarProvider
+       maxSnack={3}
+       anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      >
         {requireNoAuth.includes(router.pathname) ? (
           <Onboardinglayout> 
             <Component {...pageProps} />
@@ -47,6 +55,7 @@ const MyApp = ({ Component, pageProps }) => {
           </ProtectedRoute>
           )
         )}
+      </SnackbarProvider>
       </PersistGate>
     </Provider>
   );

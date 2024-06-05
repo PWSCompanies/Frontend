@@ -3,6 +3,7 @@ import Atoms from "../Atoms";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import usePasswordValidation from "../../../hooks/Validationhooks";
+import { enqueueSnackbar } from "notistack";
 
 // importing atoms elements
 const { Button, LoginWithCard, InputField, OtpVerify } = Atoms;
@@ -26,16 +27,44 @@ export default function SignUpContainer() {
     };
 
     const handleClick = () => {
-        if (!passwordValid) {
-            console.log("Password does not meet the criteria");
+        let isValid = true;
+    
+        LoginOptions.Input.forEach((item, index) => {
+            const value = inputValues[item.text];
+            
+            // Check if the input field is empty
+            if (!value || value.trim() === '') {
+                console.log(`Please fill ${item.text} field.`);
+                enqueueSnackbar(`Please fill ${item.text} field.`, { variant: 'error' });
+                isValid = false;
+            }
+        });
+    
+        if (!isValid) {
             return;
         }
-        if (passwordValid) {
-            console.log(inputValues);
+        
+        if (!passwordValid) {
+            console.log("Password does not meet requirement.");
+            enqueueSnackbar('Password does not meet requirement.', { variant: 'error' });
+            return;
         }
-
+        const passwordIndex = LoginOptions.Input.findIndex(item => item.text === "Password");
+        const confirmPasswordIndex = LoginOptions.Input.findIndex(item => item.text === "Confirm Password");
+        const password = inputValues[LoginOptions.Input[passwordIndex].text];
+        const confirmPassword = inputValues[LoginOptions.Input[confirmPasswordIndex].text];
+        if (password !== confirmPassword) {
+            console.log("Passwords do not match.");
+            enqueueSnackbar('Passwords do not match.', { variant: 'error' });
+            return;
+        }
+        
+        console.log(inputValues);
+        enqueueSnackbar('Sign Up Successful.', { variant: 'success' });
         router.push('/auth/OtpVerify');
     }
+    
+    
 
     const PasswordValidationIndicator = () => {
         // const textColor = passwordValid ? 'text-textgreen' : 'text-red-500';
@@ -139,7 +168,7 @@ const LoginOptions = {
         },
         {
             text: "Phone No",
-            type: "text"
+            type: "number"
         },
         {
             text: "Nigeria",
@@ -150,7 +179,7 @@ const LoginOptions = {
             type: "password"
         },
         {
-            text: "Password",
+            text: "Confirm Password",
             type: "password"
         }
     ]
