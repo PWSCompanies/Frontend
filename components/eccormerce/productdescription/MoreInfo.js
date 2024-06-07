@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import Specification from "./Specification";
 import ProductDetail from "./ProductDetail";
 
-export default function MoreInfo() {
+export default function MoreInfo({ data }) {
   const [selected, setSelected] = useState("productDetail");
 
   const showChoose = () => {
     const renderComponent = () => {
       switch (selected) {
         case "specification":
-          return <Specification />;
+          return <Specification data={data} />;
         case "productDetail":
-          return <ProductDetail />;
+          return <ProductDetail data={data} />;
         default:
           break;
       }
