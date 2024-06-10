@@ -348,3 +348,134 @@ export const DeleteIcon = (props) => (
       />
     </svg>
   )
+
+  export const EmptyDataIcon = (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={114}
+      height={122}
+      fill="none"
+      {...props}
+    >
+      <g filter="url(#a)">
+        <path fill="#1B3554" d="M24.95 91h62v6h-62z" />
+      </g>
+      <path fill="#E0E5EC" d="M25.45 9h62v39.5h-62z" />
+      <path
+        fill="#CFD4DC"
+        fillRule="evenodd"
+        d="M25.45 9v60h-10V32.718l5-7.675L25.45 9ZM86.95 9v60h10V32.718l-5-7.675L86.95 9Z"
+        clipRule="evenodd"
+      />
+      <path
+        fill="#fff"
+        d="M15.45 32.5h81.5V98a5 5 0 0 1-5 5h-71.5a5 5 0 0 1-5-5V32.5Z"
+      />
+      <path
+        fill="#1B3554"
+        fillRule="evenodd"
+        d="M39.95 60.274c0-.35.18-.675.49-.836.692-.357 2.014-.938 3.299-.938 1.284 0 2.568.58 3.237.938a.92.92 0 0 1 .474.821c0 .806-.927 1.333-1.685 1.06-.608-.219-1.324-.396-2.045-.396-.736 0-1.471.185-2.095.41-.756.273-1.675-.255-1.675-1.06ZM65.45 60.274c0-.35.18-.675.49-.836.692-.357 2.014-.938 3.299-.938 1.284 0 2.568.58 3.237.938a.92.92 0 0 1 .474.821c0 .806-.927 1.333-1.685 1.06-.608-.219-1.324-.396-2.045-.396-.736 0-1.471.185-2.095.41-.756.273-1.675-.255-1.675-1.06Z"
+        clipRule="evenodd"
+        opacity={0.5}
+      />
+      <ellipse
+        cx={56.45}
+        cy={70.501}
+        fill="#1B3554"
+        opacity={0.5}
+        rx={8}
+        ry={3.502}
+      />
+      <circle cx={37.95} cy={40} r={3} fill="#1B3554" opacity={0.149} />
+      <circle cx={74.45} cy={40} r={3} fill="#1B3554" opacity={0.149} />
+      <path
+        stroke="#5E7085"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={5}
+        d="M37.95 39.846V21.25C37.95 11.17 46.12 3 56.2 3s18.25 8.17 18.25 18.25v18.596"
+      />
+      <g filter="url(#b)">
+        <circle cx={96.75} cy={89.3} r={8.8} fill="url(#c)" />
+      </g>
+      <path
+        fill="#fff"
+        d="M93.604 99.92a68.588 68.588 0 0 0 2.693-2.34 11.14 11.14 0 0 0 1.672-1.972c.446-.68.669-1.349.669-2.006 0-.598-.141-1.068-.423-1.408-.281-.34-.716-.51-1.302-.51-.587 0-1.039.199-1.355.598-.317.387-.481.921-.493 1.602H92.67c.047-1.408.464-2.476 1.25-3.204.798-.727 1.807-1.09 3.027-1.09 1.338 0 2.364.357 3.08 1.073.716.704 1.074 1.637 1.074 2.798 0 .915-.247 1.79-.74 2.623a10.58 10.58 0 0 1-1.69 2.182c-.633.61-1.46 1.35-2.48 2.218h5.191v2.041h-8.694v-1.83l.915-.775Z"
+      />
+      <defs>
+        <filter
+          id="a"
+          width={110.374}
+          height={54.374}
+          x={0.763}
+          y={66.813}
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+        >
+          <feFlood floodOpacity={0} result="BackgroundImageFix" />
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur
+            result="effect1_foregroundBlur_1343_4096"
+            stdDeviation={12.094}
+          />
+        </filter>
+        <filter
+          id="b"
+          width={33.6}
+          height={33.6}
+          x={79.95}
+          y={74.5}
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+        >
+          <feFlood floodOpacity={0} result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            result="hardAlpha"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          />
+          <feOffset dy={2} />
+          <feGaussianBlur stdDeviation={4} />
+          <feColorMatrix values="0 0 0 0 1 0 0 0 0 0.415686 0 0 0 0 0.596078 0 0 0 0.3 0" />
+          <feBlend
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_1343_4096"
+          />
+          <feBlend
+            in="SourceGraphic"
+            in2="effect1_dropShadow_1343_4096"
+            result="shape"
+          />
+        </filter>
+        <linearGradient
+          id="c"
+          x1={96.75}
+          x2={79.15}
+          y1={71.7}
+          y2={89.3}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FF8960" />
+          <stop offset={1} stopColor="#FF62A5" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+
+  export const ArrowLeftIcon = (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={21}
+      height={10}
+      fill="none"
+      {...props}
+    >
+      <path
+        stroke="#313133"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M5 9 1 5m0 0 4-4M1 5h19.2"
+      />
+    </svg>
+  )

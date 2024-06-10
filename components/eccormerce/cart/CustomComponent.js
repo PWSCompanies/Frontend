@@ -213,13 +213,14 @@ export const Button = ({
   const {
     padding = "px-5 py-3",
     textColor = "text-white",
+    textSize = "text-xs sm:text-sm",
     bgColor = "bg-green-600",
     rounded = "rounded-[10px]",
     customClasses = "",
   } = customStyles;
 
-  const baseStyles = `${padding} ${textColor} text-xs font-medium ${bgColor} ${rounded} justify-center items-center flex`;
-  const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";
+  const baseStyles = `${padding} ${textColor} ${textSize} font-medium ${bgColor} ${rounded} justify-center items-center flex`;
+  const disabledStyles = disabled ? "" : "";
 
   return (
     <button

@@ -21,6 +21,8 @@ const MyApp = ({ Component, pageProps }) => {
     "/cart",
     "/checkout",
     "/contactus",
+    "/myorders",
+    "/addressbook",
   ];
 
   return (
