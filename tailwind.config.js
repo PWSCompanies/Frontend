@@ -17,6 +17,7 @@ module.exports = {
         bord: "#DADADA",
         textcol: "#555555",
         textgreen: "#00BA34",
+        textwhite: "#fff",
       },
     },
   },

@@ -10,14 +10,22 @@ import { useRouter } from "next/router";
 import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
 import DashboardLayout from "../components/dashboard/layout/DashboardLayout";
 import ProtectedRoute from "../components/dashboard/ProtectedRoute";
+import Onboardinglayout from "../components/Onboarding/layout/Onboardinglayout";
+import { SnackbarProvider } from "notistack";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const requireNoAuth = [
-    "/",
+    // "/",
     "/auth/login",
     "/auth/signup",
+    "/auth/OtpVerify",
+    "/auth/SignUpChoice",
     "/auth/forgotPassword",
+    "/auth/Newpassword",
+  ];
+  const requireAuth = [
+    "/",
     "/cart",
     "/checkout",
     "/contactus",
@@ -26,17 +34,31 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
+      <SnackbarProvider
+       maxSnack={3}
+       anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      >
         {requireNoAuth.includes(router.pathname) ? (
-          <EccormerceLayout>
+          <Onboardinglayout> 
             <Component {...pageProps} />
-          </EccormerceLayout>
+          </Onboardinglayout>
         ) : (
+          requireAuth.includes(router.pathname) ? ( 
+            <EccormerceLayout>
+              <Component {...pageProps} />
+            </EccormerceLayout>
+          ) : (
           <ProtectedRoute>
             <DashboardLayout>
               <Component {...pageProps} />
             </DashboardLayout>
           </ProtectedRoute>
+          )
         )}
+      </SnackbarProvider>
       </PersistGate>
     </Provider>
   );
