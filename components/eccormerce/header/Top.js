@@ -54,19 +54,17 @@ export default function Top() {
             <img src="/eccormerce/profile.svg" alt="" className="h-5" />
             <span>Account</span>
           </div>
-          <Link
-            href="/contactus"
-            className="flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <img src="/eccormerce/help.svg" alt="" className="h-5" />
-            <span>Help</span>
+          <Link href="/contactus" className="">
+            <div className="flex items-center justify-center gap-2 cursor-pointer">
+              <img src="/eccormerce/help.svg" alt="" className="h-5" />
+              <span>Help</span>
+            </div>
           </Link>
-          <Link
-            href="/cart"
-            className="flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <img src="/eccormerce/cart.svg" alt="" className="h-5" />
-            <span>Cart</span>
+          <Link href="/cart" className="">
+            <div className="flex items-center justify-center gap-2 cursor-pointer">
+              <img src="/eccormerce/cart.svg" alt="" className="h-5" />
+              <span>Cart</span>
+            </div>
           </Link>
         </div>
         {/* harmbuger menu side */}
