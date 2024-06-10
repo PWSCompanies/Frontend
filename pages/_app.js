@@ -1,22 +1,29 @@
-// TODO - Update the '"name": "next-js-template",' line in 'package.json' to your project name
-// TODO - Update favicon
-
 import { Provider } from "react-redux";
-
-import "../styles/globals.css";
-import { persistor, store } from "../store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { useRouter } from "next/router";
 import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
-import DashboardLayout from "../components/dashboard/layout/DashboardLayout";
-import ProtectedRoute from "../components/dashboard/ProtectedRoute";
+import ProtectedRoute from "../components/dashboardutils/ProtectedRoute";
+import Layoutconsumer from "../components/dashboardconsumer/layout/Layoutconsumer";
+import Layoutretail from "../components/dashboardretailer/layout/Layoutretail";
+
+import "../styles/globals.css";
+import { persistor, store } from "../store/store";
+import NotFoundPage from "../components/notfound/NotFoundPage";
 import Onboardinglayout from "../components/Onboarding/layout/Onboardinglayout";
 import { SnackbarProvider } from "notistack";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
+
   const requireNoAuth = [
-    // "/",
+    "/",
+    "/checkout",
+    "/contactus",
+    "/description",
+    "/cart",
+  ];
+
+  const onboarding = [
     "/auth/login",
     "/auth/signup",
     "/auth/OtpVerify",
@@ -24,41 +31,70 @@ const MyApp = ({ Component, pageProps }) => {
     "/auth/forgotPassword",
     "/auth/Newpassword",
   ];
-  const requireAuth = [
-    "/",
-    "/cart",
-    "/checkout",
-    "/contactus",
+
+  const requireAuthConsumer = [
+    "/user/account",
+    "/user/orders",
+    "/user/inbox",
+    "/user/ratings",
+    "/user/saved",
+    "/user/addressbook",
+    "/user/followed",
+    "/user/settings",
   ];
+
+  const requireAuthRetailer = [
+    "/retailer/account",
+    "/retailer/orders",
+    "/retailer/inbox",
+    "/retailer/ratings",
+    "/retailer/saved",
+    "/retailer/addressbook",
+    "/retailer/followed",
+    "/retailer/settings",
+  ];
+
+  const isOnBoarding = onboarding.includes(router.pathname);
+  const isNoAuthRoute = requireNoAuth.includes(router.pathname);
+  const isConsumerRoute = requireAuthConsumer.includes(router.pathname);
+  const isRetailerRoute = requireAuthRetailer.includes(router.pathname);
 
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-      <SnackbarProvider
-       maxSnack={3}
-       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      >
-        {requireNoAuth.includes(router.pathname) ? (
-          <Onboardinglayout> 
-            <Component {...pageProps} />
-          </Onboardinglayout>
-        ) : (
-          requireAuth.includes(router.pathname) ? ( 
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          {isRetailerRoute ? (
+            <ProtectedRoute>
+              <Layoutretail>
+                <Component {...pageProps} />
+              </Layoutretail>
+            </ProtectedRoute>
+          ) : isConsumerRoute ? (
+            <EccormerceLayout>
+              <ProtectedRoute>
+                <Layoutconsumer>
+                  <Component {...pageProps} />
+                </Layoutconsumer>
+              </ProtectedRoute>
+            </EccormerceLayout>
+          ) : isOnBoarding ? (
+            <Onboardinglayout>
+              <Component {...pageProps} />
+            </Onboardinglayout>
+          ) : isNoAuthRoute ? (
             <EccormerceLayout>
               <Component {...pageProps} />
             </EccormerceLayout>
           ) : (
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Component {...pageProps} />
-            </DashboardLayout>
-          </ProtectedRoute>
-          )
-        )}
-      </SnackbarProvider>
+            <NotFoundPage />
+          )}
+        </SnackbarProvider>
       </PersistGate>
     </Provider>
   );

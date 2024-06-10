@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   token: null,
-  auth: false,
+  auth: true,
 };
 
 export const userSlice = createSlice({
@@ -16,7 +16,6 @@ export const userSlice = createSlice({
     setToken: (state, data) => {
       state.token = data;
     },
-
     setAuth: (state, data) => {
       state.auth = data;
     },
