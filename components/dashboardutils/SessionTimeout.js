@@ -59,7 +59,7 @@ const SessionTimeout = ({ children }) => {
       document.removeEventListener("mousemove", handleUserActivity);
       document.removeEventListener("keydown", handleUserActivity);
     };
-  }, []);
+  });
 
   if (sessionExpired) {
     // Render your session expired message or redirect the user

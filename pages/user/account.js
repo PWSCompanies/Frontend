@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export default function account() {
-  const user = useSelector((state) => state.user.user);
+  // const user = useSelector((state) => state.user.user);
 
   return (
     <div className="bg-white rounded-xl border border-[#E3E5E5] py-4 w-[100%] h-auto">

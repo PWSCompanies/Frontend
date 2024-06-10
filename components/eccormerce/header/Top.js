@@ -24,9 +24,9 @@ export default function Top() {
   return (
     <>
       <div className="w-[100%] flex justify-evenly md:justify-center md:gap-10 items-center py-2 px-15 relative">
-        <a href="/">
+        <Link href="/">
           <img src="/logo.svg" alt="" />
-        </a>
+        </Link>
         <div className="w-[35%] hidden md:flex">
           <SearchComp />
         </div>
@@ -54,20 +54,20 @@ export default function Top() {
             <img src="/eccormerce/profile.svg" alt="" className="h-5" />
             <span>Account</span>
           </div>
-          <a
+          <Link
             href="/contactus"
             className="flex items-center justify-center gap-2 cursor-pointer"
           >
             <img src="/eccormerce/help.svg" alt="" className="h-5" />
             <span>Help</span>
-          </a>
-          <a
+          </Link>
+          <Link
             href="/cart"
             className="flex items-center justify-center gap-2 cursor-pointer"
           >
             <img src="/eccormerce/cart.svg" alt="" className="h-5" />
             <span>Cart</span>
-          </a>
+          </Link>
         </div>
         {/* harmbuger menu side */}
         <div

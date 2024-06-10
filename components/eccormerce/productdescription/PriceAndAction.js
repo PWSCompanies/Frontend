@@ -17,7 +17,7 @@ export default function PriceAndAction({ product }) {
         </div>
         <div className="flex gap-2">
           {Object.keys(product.otherUrl).map((key, index) => (
-            <div className=" bg-black bg-opacity-5 p-1">
+            <div key={index} className=" bg-black bg-opacity-5 p-1">
               <Image
                 src={`${product.url}`}
                 alt="image product for description"
