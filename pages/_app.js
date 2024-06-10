@@ -9,19 +9,27 @@ import Layoutretail from "../components/dashboardretailer/layout/Layoutretail";
 import "../styles/globals.css";
 import { persistor, store } from "../store/store";
 import NotFoundPage from "../components/notfound/NotFoundPage";
+import Onboardinglayout from "../components/Onboarding/layout/Onboardinglayout";
+import { SnackbarProvider } from "notistack";
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
   const requireNoAuth = [
     "/",
-    "/auth/login",
-    "/auth/signup",
-    "/auth/forgotPassword",
-    "/cart",
     "/checkout",
     "/contactus",
     "/description",
+    "/cart",
+  ];
+
+  const onboarding = [
+    "/auth/login",
+    "/auth/signup",
+    "/auth/OtpVerify",
+    "/auth/SignUpChoice",
+    "/auth/forgotPassword",
+    "/auth/Newpassword",
   ];
 
   const requireAuthConsumer = [
@@ -46,6 +54,7 @@ const MyApp = ({ Component, pageProps }) => {
     "/retailer/settings",
   ];
 
+  const isOnBoarding = onboarding.includes(router.pathname);
   const isNoAuthRoute = requireNoAuth.includes(router.pathname);
   const isConsumerRoute = requireAuthConsumer.includes(router.pathname);
   const isRetailerRoute = requireAuthRetailer.includes(router.pathname);
@@ -53,27 +62,39 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        {isRetailerRoute ? (
-          <ProtectedRoute>
-            <Layoutretail>
-              <Component {...pageProps} />
-            </Layoutretail>
-          </ProtectedRoute>
-        ) : isConsumerRoute ? (
-          <EccormerceLayout>
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          {isRetailerRoute ? (
             <ProtectedRoute>
-              <Layoutconsumer>
+              <Layoutretail>
                 <Component {...pageProps} />
-              </Layoutconsumer>
+              </Layoutretail>
             </ProtectedRoute>
-          </EccormerceLayout>
-        ) : isNoAuthRoute ? (
-          <EccormerceLayout>
-            <Component {...pageProps} />
-          </EccormerceLayout>
-        ) : (
-          <NotFoundPage />
-        )}
+          ) : isConsumerRoute ? (
+            <EccormerceLayout>
+              <ProtectedRoute>
+                <Layoutconsumer>
+                  <Component {...pageProps} />
+                </Layoutconsumer>
+              </ProtectedRoute>
+            </EccormerceLayout>
+          ) : isOnBoarding ? (
+            <Onboardinglayout>
+              <Component {...pageProps} />
+            </Onboardinglayout>
+          ) : isNoAuthRoute ? (
+            <EccormerceLayout>
+              <Component {...pageProps} />
+            </EccormerceLayout>
+          ) : (
+            <NotFoundPage />
+          )}
+        </SnackbarProvider>
       </PersistGate>
     </Provider>
   );
