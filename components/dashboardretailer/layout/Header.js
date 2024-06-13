@@ -27,8 +27,10 @@ export default function Header() {
             href="/contactus"
             className="flex items-center justify-center gap-2 cursor-pointer"
           >
-            <img src="/eccormerce/help.svg" alt="" className="h-5" />
-            <span>Help</span>
+            <a>
+              <img src="/eccormerce/help.svg" alt="" className="h-5" />
+              <span>Help</span>
+            </a>
           </Link>
         </div>
       </div>
