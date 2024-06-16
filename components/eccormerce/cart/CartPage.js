@@ -10,10 +10,10 @@ import {
   selectCartSubtotal,
 } from "../../../store/cart/cartSlice";
 import { CartIcon1 } from "../svg/SvgImages";
-import { formatNumberWithCommas } from "../formatNumber";
+import { formatNumberWithCommas } from "../../formatNumber";
 import CartItem from "./CartItem";
 import { useRouter } from "next/router";
-import { Button } from "./CustomComponent";
+import { Button } from "../../CustomComponent";
 
 export default function CartPage() {
   const cartItems = useSelector(selectCartItems);

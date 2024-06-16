@@ -7,10 +7,10 @@ import {
   selectCartSubtotal,
 } from "../../../../store/cart/cartSlice";
 import { useSelector } from "react-redux";
-import { formatNumberWithCommas } from "../../formatNumber";
+import { formatNumberWithCommas } from "../../../formatNumber";
 import ChangeAddress from "./ChangeAddress";
 import AddNewAddress from "./AddNewAddress";
-import { Button, Modal } from "../CustomComponent";
+import { Button, Modal } from "../../../CustomComponent";
 import EditAddress from "./EditAddress";
 
 export default function CheckoutPage() {

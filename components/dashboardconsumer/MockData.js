@@ -1,0 +1,36 @@
+export const productData = [
+  {
+    id: 1,
+    signed_as: "retailer",
+    email: "onyekosorprosper@gmail.com",
+    first_name: "prosper",
+    last_name: "onyekosor",
+    phone_number: "+2348133150824",
+    password: "11111111",
+    orders: [{}],
+    messages: [{}],
+    ratings: [{}],
+    saved_items: [{}],
+    address: {
+      country: "NGN",
+      region: "west africa",
+    },
+  },
+  {
+    id: 1,
+    signed_as: "consumer",
+    email: "nkonyeprosper@gmail.com",
+    first_name: "prospertwo",
+    last_name: "onyekosortwo",
+    phone_number: "+2348133150833",
+    password: "qqqqqqqq",
+    deliveries: [{}],
+    messages: [{}],
+    ratings: [{}],
+    saved_items: [{}],
+    address: {
+      country: "NGN",
+      region: "west africa",
+    },
+  },
+];

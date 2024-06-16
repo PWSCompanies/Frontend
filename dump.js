@@ -1,100 +1,77 @@
-import React, {useRef} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { DownloadData } from '../../../utility/types';
+// TODO - Update the '"name": "next-js-template",' line in 'package.json' to your project name
+// TODO - Update favicon
 
+import { Provider } from "react-redux";
 
-interface Props {
-  showDownload: boolean;
-  setShowDownload: React.Dispatch<React.SetStateAction<boolean>>;
-  toDownload: DownloadData | null;
-}
+import "../styles/globals.css";
+import { persistor, store } from "../store/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { useRouter } from "next/router";
+import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
+import ProtectedRoute from "../components/dashboardutils/ProtectedRoute";
+import Layoutconsumer from "../components/dashboardconsumer/layout/Layoutconsumer";
+import Layoutretail from "../components/dashboardretailer/layout/Layoutretail";
 
-export default function DownloadReciept({showDownload: boolean, setShowDownload: React.Dispatch<React.SetStateAction<boolean>>, toDownload: DownloadData}) {
-    const viewShotRef = useRef(null);
+const MyApp = ({ Component, pageProps }) => {
+  const router = useRouter();
+  const requireNoAuth = [
+    "/",
+    "/auth/login",
+    "/auth/signup",
+    "/auth/forgotPassword",
+    "/cart",
+    "/checkout",
+    "/contactus",
+    "/description",
+  ];
 
+  const requireAuthConsumer = [
+    "/consumer/account",
+    "/consumer/orders",
+    "/consumer/inbox",
+    "/consumer/ratings",
+    "/consumer/saved",
+    "/consumer/addressbook",
+    "/consumer/followed",
+    "/consumer/settings",
+  ];
 
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.9)',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      closeButton: {
-        position: 'absolute',
-        top: 40,
-        right: 20,
-        zIndex: 99999999999,
-      },
-      closeButtonText: {
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold',
-      },
-      modalContent: {
-        maxWidth: 450,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        paddingVertical: 40,
-        paddingHorizontal: 30,
-        width: '50%',
-        height: 'auto', // or '100%'
-        position: 'relative',
-      },
-      title: {
-        marginBottom: 30,
-        fontSize: 20,
-        textAlign: 'center',
-        fontFamily: 'ui-semi', // Use appropriate font family
-      },
-      infoContainer: {
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: 'gray',
-        padding: 23,
-      },
-      successIcon: {
-        width: 95,
-        height: 95,
-        backgroundColor: 'rgba(110, 62, 255, 0.1)',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      pendingIcon: {
-        width: 95,
-        height: 95,
-        backgroundColor: 'rgba(255, 204, 0, 0.1)',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    });
-    
-    
+  const requireAuthRetailer = [
+    "/retailer/account",
+    "/retailer/orders",
+    "/retailer/inbox",
+    "/retailer/ratings",
+    "/retailer/saved",
+    "/retailer/addressbook",
+    "/retailer/followed",
+    "/retailer/settings",
+  ];
+
   return (
-    <View style={styles.container} ref={viewShotRef}>
-      <TouchableOpacity
-        style={styles.closeButton}
-        onPress={() => setShowDownload(false)}
-      >
-        <Text style={styles.closeButtonText}>X</Text>
-      </TouchableOpacity>
-      <View style={styles.modalContent}>
-        <Text style={styles.title}>Transaction Detail</Text>
-        <View style={styles.infoContainer}>
-          {toDownload?.status === 'success' ? (
-            <View style={styles.successIcon}>
-              {/* Replace this with your success icon */}
-            </View>
-          ) : toDownload?.status === 'incomplete' || toDownload?.status === 'pending' ? (
-            <View style={styles.pendingIcon}>
-              {/* Replace this with your pending/incomplete icon */}
-            </View>
-          ) : null}
-        </View>
-      </View>
-    </View>
-  )
-}
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        {requireAuthRetailer.includes(router.pathname) ? (
+          <ProtectedRoute>
+            <Layoutretail>
+              <Component {...pageProps} />
+            </Layoutretail>
+          </ProtectedRoute>
+        ) : (
+          <EccormerceLayout>
+            {requireNoAuth.includes(router.pathname) ? (
+              <Component {...pageProps} />
+            ) : (
+              <ProtectedRoute>
+                <Layoutconsumer>
+                  <Component {...pageProps} />
+                </Layoutconsumer>
+              </ProtectedRoute>
+            )}
+          </EccormerceLayout>
+        )}
+      </PersistGate>
+    </Provider>
+  );
+};
 
-
+export default MyApp;
