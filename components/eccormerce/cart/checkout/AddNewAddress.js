@@ -82,11 +82,11 @@ export default function AddNewAddress({ closeAddNewModal }) {
                     <FloatInputField type="text" id="firstName" name="firstName" label="First Name *" placeholder="First Name *" value={formData.firstName} onChange={handleChange} required />
                     <FloatInputField type="text" id="lastName" name="lastName" label="Last Name *" placeholder="Last Name *" value={formData.lastName} onChange={handleChange} required />
                     <div className="w-full flex gap-2 items-center">
-                        <InputField value="+234" disabled customStyles={{customClasses: "w-[59px]"}}/>
+                        <InputField value="+234" disabled customStyles={{customClasses: "w-[57px]"}}/>
                         <FloatInputField id="phoneNumber" name="phoneNumber" label="Enter Phone Number" placeholder="Enter Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
                     </div>
                     <div className="w-full flex gap-2 items-center">
-                        <InputField value="+234" disabled customStyles={{customClasses: "w-[59px]"}}/>
+                        <InputField value="+234" disabled customStyles={{customClasses: "w-[57px]"}}/>
                         <FloatInputField id="phoneNumberTwo" name="phoneNumberTwo" label="Enter Second Phone Number" placeholder="Enter Second Phone Number" value={formData.phoneNumberTwo} onChange={handleChange} />
                     </div>
                 </div>
