@@ -82,13 +82,17 @@ export default function Top() {
           >
             <div className="flex flex-col justify-center items-center w-[100%] gap-2 px-3">
               {/* Login */}
-              <div className="bg-[#00BA34] text-white text-center rounded-lg py-3 w-[95%] cursor-pointer">
-                Register
-              </div>
+              <Link href="/auth/SignUpChoice">
+                <div className="bg-[#00BA34] text-white text-center rounded-lg py-3 w-[95%] cursor-pointer">
+                  Register
+                </div>
+              </Link>
               {/* Sign up */}
-              <div className="border border-[#DADADA] text-black text-center rounded-lg py-3 w-[95%] cursor-pointer">
-                Sign in
-              </div>
+              <Link href="/auth/login">
+                <div className="border border-[#DADADA] text-black text-center rounded-lg py-3 w-[95%] cursor-pointer">
+                  Sign in
+                </div>
+              </Link>
             </div>
             <hr className="w-[100%] text-[#00ff00]" />
             {/*down part showing icons */}

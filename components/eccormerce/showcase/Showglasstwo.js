@@ -1,10 +1,16 @@
 import Image from "next/image";
 import React from "react";
 import { Instock, Rating } from "../svg/SvgImages";
+import { useRouter } from "next/router";
 
 function Showglasstwo({ data }) {
+  const router = useRouter();
+
   return (
-    <div className="rounded flex flex-col">
+    <div
+      className="rounded flex flex-col cursor-pointer"
+      onClick={() => router.push("/description")}
+    >
       {/* Product image */}
       {/* <img src={`${data.url}`} alt="image for product" className="h-44" /> */}
       <div className="bg-[#fff] rounded p-2">
