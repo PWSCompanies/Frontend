@@ -1,7 +1,7 @@
 import React from "react";
-import PriceAndAction from "../components/eccormerce/productdescription/PriceAndAction";
 import InfoAndSeller from "../components/eccormerce/productdescription/InfoAndSeller";
 import MoreInfo from "../components/eccormerce/productdescription/MoreInfo";
+import PriceAndAction from "../components/eccormerce/productdescription/PriceAndAction";
 
 export default function description() {
   const product = {

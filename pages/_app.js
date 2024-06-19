@@ -39,6 +39,8 @@ const MyApp = ({ Component, pageProps }) => {
     "/user/ratings",
     "/user/saved",
     "/user/addressbook",
+    "/user/saveditems",
+    "/user/inbox",
     "/user/followed",
     "/user/settings",
   ];

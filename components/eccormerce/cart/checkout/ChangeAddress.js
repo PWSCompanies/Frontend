@@ -1,6 +1,6 @@
 import React from "react";
 import { PencilIcon, PlusIcon } from "../../svg/SvgImages";
-import { Button } from "../CustomComponent";
+import { Button } from "../../../CustomComponent";
 
 export default function ChangeAddress({ closeModal, openAddNewModal, openEditAddModal }) {
   return (
@@ -58,6 +58,7 @@ export default function ChangeAddress({ closeModal, openAddNewModal, openEditAdd
             customStyles={{
               padding: "p-0",
               bgColor: "bg-white",
+              border: "border-none",
               textColor: "text-green-600",
               rounded: "rounded-[0px]",
             }}

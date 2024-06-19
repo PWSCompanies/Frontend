@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { nigeriaData } from "./ListData";
+import { nigeriaData } from "./NigeriaData";
 import {
   Button,
   CheckboxInputField,
   CustomSelect,
   FloatInputField,
   InputField,
-} from "../CustomComponent";
+} from "../../../CustomComponent";
+import AddressForm from "../../../dashboardretailer/addressBook/AddressForm";
 
 export default function AddNewAddress({ closeAddNewModal }) {
   const [formData, setFormData] = useState({
@@ -73,41 +74,38 @@ export default function AddNewAddress({ closeAddNewModal }) {
     : [];
 
   return (
-    <div className="relative rounded-[10px]">
-      <div className="w-full max-h-[550px] min-h-[200px] overflow-y-auto">
-        <div className="w-full border h-full">
-          <form className="pb-20" onSubmit={handleSubmit}>
-            <div className="p-5">
-              <div className="flex flex-col gap-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <FloatInputField type="text" id="firstName" name="firstName" label="First Name *" placeholder="First Name *" value={formData.firstName} onChange={handleChange} required />
-                  <FloatInputField type="text" id="lastName" name="lastName" label="Last Name *" placeholder="Last Name *" value={formData.lastName} onChange={handleChange} required />
-
-                  <div className="w-full flex gap-2 items-center">
-                    <InputField value="+234" disabled containerStyle="w-[75px]" className="px-[10px] relative -top-1" />
-                    <FloatInputField id="phoneNumber" name="phoneNumber" label="Enter Phone Number" placeholder="Enter Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
-                  </div>
-                  <div className="w-full flex gap-2 items-center">
-                    <InputField value="+234" disabled containerStyle="w-[75px]" className="px-[10px] relative -top-1" />
-                    <FloatInputField id="phoneNumberTwo" name="phoneNumberTwo" label="Enter Second Phone Number" placeholder="Enter Second Phone Number" value={formData.phoneNumberTwo} onChange={handleChange} />
-                  </div>
+    <div className="p-4 pt-5">
+      <div className="w-full max-h-[570px] min-h-[200px] overflow-y-auto pt-3 sm:pt-0">
+        <form className="pb-20" onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <FloatInputField type="text" id="firstName" name="firstName" label="First Name *" placeholder="First Name *" value={formData.firstName} onChange={handleChange} required />
+                    <FloatInputField type="text" id="lastName" name="lastName" label="Last Name *" placeholder="Last Name *" value={formData.lastName} onChange={handleChange} required />
+                    <div className="w-full flex gap-2 items-center">
+                        <InputField value="+234" disabled customStyles={{customClasses: "w-[57px]"}}/>
+                        <FloatInputField id="phoneNumber" name="phoneNumber" label="Enter Phone Number" placeholder="Enter Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+                    </div>
+                    <div className="w-full flex gap-2 items-center">
+                        <InputField value="+234" disabled customStyles={{customClasses: "w-[57px]"}}/>
+                        <FloatInputField id="phoneNumberTwo" name="phoneNumberTwo" label="Enter Second Phone Number" placeholder="Enter Second Phone Number" value={formData.phoneNumberTwo} onChange={handleChange} />
+                    </div>
                 </div>
                 <FloatInputField type="text" id="deliveryAddress" name="deliveryAddress" label="Delivery Address" placeholder="Delivery Address" value={formData.deliveryAddress} onChange={handleChange} />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                   <CustomSelect placeholder="State" options={states} value={selectedState} onChange={handleStateChange} />
                   <CustomSelect placeholder="City" options={cities} value={selectedCity} onChange={handleCityChange} disabled={!selectedState} />
                   <CustomSelect placeholder="LGA" options={lgas} value={selectedLGA} onChange={handleLGAChange} disabled={!selectedCity} />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center pl-2 sm:pl-0">
                   <CheckboxInputField id="checked-checkbox" label="Set as Default Address" checked={formData.setDefault} onChange={handleCheckboxChange} />
                 </div>
-              </div>
             </div>
             <div className="w-full rounded-b-[10px] absolute left-0 bottom-0 right-0 pr-5 py-2.5 bg-white border-t border-zinc-300 justify-end mt-[42px] items-center flex">
               <div className="self-stretch justify-start items-center gap-[15px] flex">
                 <Button type="button" onClick={closeAddNewModal}
                   customStyles={{
                     padding: "p-0",
+                    border: "border-none",
                     bgColor: "bg-white",
                     textColor: "text-green-600",
                     rounded: "rounded-[0px]",
@@ -120,8 +118,7 @@ export default function AddNewAddress({ closeAddNewModal }) {
                 </Button>
               </div>
             </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   );

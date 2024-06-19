@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CheckMarkIcon1, CloseIcon } from "../svg/SvgImages";
+import { CheckMarkIcon1, CloseIcon } from "./eccormerce/svg/SvgImages";
 
 export const FloatInputField = ({
   id,
@@ -33,22 +33,25 @@ export const FloatInputField = ({
   );
 };
 
-export const InputField = ({
+export const InputFieldOld = ({
   id,
   name,
   label,
   disabled,
-  type = 'text',
+  type = "text",
   value,
   onChange,
   placeholder = "",
   className = "",
   containerStyle = "",
-  labelClassName = ""
+  labelClassName = "",
 }) => {
   return (
     <div className={`relative w-full bg-inherit ${containerStyle}`}>
-      <label htmlFor={id} className={`block mb-2 text-zinc-800 text-sm font-medium ${labelClassName}`}>
+      <label
+        htmlFor={id}
+        className={`block mb-2 text-zinc-800 text-sm font-medium ${labelClassName}`}
+      >
         {label}
       </label>
       <input
@@ -57,7 +60,9 @@ export const InputField = ({
         name={name}
         value={value}
         onChange={onChange}
-        className={`text-neutral-600 text-sm font-normal w-full h-[55px] sm:h-[60px] bg-white rounded-[10px] border border-zinc-300 placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${disabled ? '' : ''} ${className}`}
+        className={`text-neutral-600 text-sm font-normal w-full h-[55px] sm:h-[60px] bg-white rounded-[10px] border border-zinc-300 placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${
+          disabled ? "" : ""
+        } ${className}`}
         placeholder={placeholder}
         disabled={disabled}
       />
@@ -65,35 +70,80 @@ export const InputField = ({
   );
 };
 
+export const InputField = ({
+  id,
+  name,
+  label,
+  value,
+  onChange,
+  placeholder = "",
+  type = "text",
+  disabled = false,
+  customStyles = {},
+}) => {
+  const {
+    customClasses = "",
+  } = customStyles;
+
+  const baseStyles = `text-neutral-600 text-sm font-normal w-full h-[55px] sm:h-[60px] bg-white rounded-[10px] border border-zinc-300 placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600`;
+  const disabledStyles = disabled ? "" : "";
+
+  return (
+    <>
+      {label && (
+        <label htmlFor={id} className="block mb-2 text-zinc-800 text-sm font-medium">
+          {label}
+        </label>
+      )}
+      <input
+        type={type}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`${baseStyles} ${disabledStyles} ${customClasses}`}
+        placeholder={placeholder}
+        disabled={disabled}
+      />
+    </>
+  );
+};
+
 export const TextAreaField = ({
   id,
   name,
   label,
-  disabled,
-  type = 'text',
   value,
   onChange,
   placeholder = "",
-  className = "",
-  containerStyle = "",
-  labelClassName = ""
+  type = "text",
+  disabled = false,
+  customStyles = {},
 }) => {
+  const {
+    customClasses = "",
+  } = customStyles;
+
+  const baseStyles = `text-neutral-600 text-sm font-normal w-full h-[55px] sm:h-[60px] bg-white rounded-[10px] border border-zinc-300 placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600`;
+  const disabledStyles = disabled ? "" : "";
+
   return (
-    <div className={`relative w-full bg-inherit ${containerStyle}`}>
-      <label htmlFor={id} className={`block mb-2 text-sm font-medium text-gray-700 ${labelClassName}`}>
-        {label}
-      </label>
+    <>
+      {label && (
+        <label htmlFor={id} className="block mb-2 text-zinc-800 text-sm font-medium">
+          {label}
+        </label>
+      )}
       <textarea
         type={type}
         id={id}
         name={name}
         value={value}
         onChange={onChange}
-        className={`text-neutral-600 text-sm font-normal w-full h-[130px] bg-white rounded-[10px] border border-zinc-300 resize-none placeholder-neutral-600 ring-zinc-300 focus:ring-green-600 focus:outline-none focus:border-green-600 ${disabled ? '' : ''} ${className}`}
+        className={`${baseStyles} ${disabledStyles} ${customClasses}`}
         placeholder={placeholder}
-        disabled={disabled}
       />
-    </div>
+    </>
   );
 };
 
@@ -213,13 +263,15 @@ export const Button = ({
   const {
     padding = "px-5 py-3",
     textColor = "text-white",
+    textSize = "text-xs sm:text-sm",
     bgColor = "bg-green-600",
+    border = "border",
     rounded = "rounded-[10px]",
     customClasses = "",
   } = customStyles;
 
-  const baseStyles = `${padding} ${textColor} text-xs font-medium ${bgColor} ${rounded} justify-center items-center flex`;
-  const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";
+  const baseStyles = `${padding} ${textColor} ${textSize} ${border} font-medium ${bgColor} ${rounded} justify-center items-center flex`;
+  const disabledStyles = disabled ? "" : "";
 
   return (
     <button
