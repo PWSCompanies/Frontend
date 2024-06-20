@@ -8,7 +8,7 @@ export default function account() {
   return (
     <div>
       <div>
-        <div className="bg-white rounded-xl border border-[#E3E5E5] py-4 w-[100%] h-auto">
+        <div className="bg-white rounded-xl border border-[#E3E5E5] py-4 w-[100%] h-[95vh]">
           <h3 className="font-bold text-textcol mx-5 my-1">My Orders</h3>
         </div>
         <div className="bg-white rounded-xl border border-[#E3E5E5] py-4 w-[100%] h-auto">

@@ -178,7 +178,27 @@ function VerifySuccesfull({title, text}) {
     );
 }
 
-const OnboardingAtoms = { Button, LoginWithCard, InputField, SignUpOptionCard, OtpVerifyCard, VerifySuccesfull };
+function FollowedCard({img, txt, price, rate, sale, pics}) {
+
+    return (
+        <div className=" w-[30%] h-[]">
+            <div className="mx-1 my-2">
+                <img src={img} alt="ProductImage" className="w-[97%] mx-auto hover:cursor-pointer transition duration-300 ease-in-out" />
+                <p className="my-1 mx-1">{txt}</p>
+                <h4 className="font-semibold mx-1 mb-1">₦{price}</h4>
+                <div className="flex gap-5 mx-0 mb-2">
+                    <span className="bg-green-100 opacity-80 px-2 py-1 rounded-full flex flex-row"><img  src="/eccormerce/star.svg" alt="" className="mr-1" />{rate}</span>
+                    <p className="bg-green-200 opacity-74 px-2 py-1 rounded-full"><span className="font-semibold text-textgreen pl-1"> sale</span> {sale}</p>
+                </div>
+                <span className="mx-1 bg-red-100 opacity-74 px-2 py-1 rounded-full flex flex-row w-[75%] text-center justify-center align-center"><img  src="/eccormerce/fire.svg" alt="" className="mr-1"  />{pics}</span>
+            </div>
+        </div>
+    );
+
+};
+
+
+const OnboardingAtoms = { Button, LoginWithCard, InputField, SignUpOptionCard, OtpVerifyCard, VerifySuccesfull, FollowedCard };
 
 export default OnboardingAtoms;
 
