@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../nav/Nav";
 
-export default function Layoutconsumer({ children }) {
+export default function Layoutsignedin({ children }) {
   return (
     <div className="bg-[#F5F5F5] md:px-28 md:h-auto h-[100%] p-5 grid grid-cols-1 md:grid-cols-7 relative ">
       {/* navigation */}

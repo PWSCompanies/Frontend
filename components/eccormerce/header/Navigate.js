@@ -8,12 +8,16 @@ export default function Navigate() {
           <img src="/eccormerce/hamburger.svg" alt="" className="h-5" />
           <span className="whitespace-nowrap">All categories</span>
         </div>
-        <div className="whitespace-nowrap">Computers and accesories</div>
-        <div className="whitespace-nowrap">Phones and tablet</div>
-        <div className="whitespace-nowrap">electronics</div>
-        <div className="whitespace-nowrap">fashion</div>
-        <div className="whitespace-nowrap">Home and Kitchen</div>
-        <div className="whitespace-nowrap">Hair extension and wig</div>
+        <div className="whitespace-nowrap cursor-pointer">
+          Capsules and Tablets
+        </div>
+        <div className="whitespace-nowrap cursor-pointer">
+          Suspentions and Solution
+        </div>
+        <div className="whitespace-nowrap cursor-pointer">Injection</div>
+        <div className="whitespace-nowrap cursor-pointer">Cream</div>
+        <div className="whitespace-nowrap cursor-pointer">Drop and Syrup</div>
+        <div className="whitespace-nowrap cursor-pointer">Spray</div>
       </div>
     </div>
   );

@@ -3,8 +3,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useRouter } from "next/router";
 import EccormerceLayout from "../components/eccormerce/layout/EccormerceLayout";
 import ProtectedRoute from "../components/dashboardutils/ProtectedRoute";
-import Layoutconsumer from "../components/dashboardconsumer/layout/Layoutconsumer";
-import Layoutretail from "../components/dashboardretailer/layout/Layoutretail";
+import Layoutuser from "../components/dashboarduser/layout/Layoutsignedin";
 
 import "../styles/globals.css";
 import { persistor, store } from "../store/store";
@@ -32,32 +31,22 @@ const MyApp = ({ Component, pageProps }) => {
     "/auth/Newpassword",
   ];
 
-  const requireAuthConsumer = [
-    "/user/account",
+  const requireAuthUser = [
+    "/user/feed",
     "/user/orders",
-    "/user/inbox",
-    "/user/ratings",
-    "/user/saved",
-    "/user/addressbook",
+    "/user/wallet",
+    "/user/inventory",
+    "/user/transactions",
+    "/user/market",
+    "/user/products",
     "/user/followed",
     "/user/settings",
   ];
 
-  const requireAuthRetailer = [
-    "/retailer/account",
-    "/retailer/orders",
-    "/retailer/inbox",
-    "/retailer/ratings",
-    "/retailer/saved",
-    "/retailer/addressbook",
-    "/retailer/followed",
-    "/retailer/settings",
-  ];
-
   const isOnBoarding = onboarding.includes(router.pathname);
   const isNoAuthRoute = requireNoAuth.includes(router.pathname);
-  const isConsumerRoute = requireAuthConsumer.includes(router.pathname);
-  const isRetailerRoute = requireAuthRetailer.includes(router.pathname);
+  const isSignedUserRoute = requireAuthUser.includes(router.pathname);
+  // const isRetailerRoute = requireAuthRetailer.includes(router.pathname);
 
   return (
     <Provider store={store}>
@@ -69,18 +58,12 @@ const MyApp = ({ Component, pageProps }) => {
             horizontal: "right",
           }}
         >
-          {isRetailerRoute ? (
-            <ProtectedRoute>
-              <Layoutretail>
-                <Component {...pageProps} />
-              </Layoutretail>
-            </ProtectedRoute>
-          ) : isConsumerRoute ? (
+          {isSignedUserRoute ? (
             <EccormerceLayout>
               <ProtectedRoute>
-                <Layoutconsumer>
+                <Layoutuser>
                   <Component {...pageProps} />
-                </Layoutconsumer>
+                </Layoutuser>
               </ProtectedRoute>
             </EccormerceLayout>
           ) : isOnBoarding ? (
